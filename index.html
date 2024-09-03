@@ -1,27 +1,365 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TableLLM: 使LLMs在真实办公场景下能够操作表格数据</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 链接到你的CSS文件 -->
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TableLLM</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    table {
+        padding: 0;
+        word-break: initial;
+    }
+    table tr {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 0;
+    }
+    table tr:nth-child(2n),
+    thead {
+        background-color: #f8f8f8;
+    }
+    table th {
+        font-weight: bold;
+        border: 1px solid #dfe2e5;
+        border-bottom: 0;
+        margin: 0;
+        padding: 6px 13px;
+    }
+    table td {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 6px 13px;
+    }
+    table th:first-child,
+    table td:first-child {
+        margin-top: 0;
+    }
+    table th:last-child,
+    table td:last-child {
+        margin-bottom: 0;
+    }
+    h1 {
+        font-size: 2.25em;
+        line-height: 1.2;
+        border-bottom: 1px solid #eee;
+    }
+    h2 {
+        font-size: 1.75em;
+        line-height: 1.225;
+        border-bottom: 1px solid #eee;
+    }
+  </style>
 </head>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/RUCKBReasoning">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://spreadsheetbench.github.io/">
+            SpreadsheetBench
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
 <body>
-    <header>
-        <h1>TableLLM: 使LLMs在真实办公场景下能够操作表格数据</h1>
-    </header>
 
-    <section class="buttons">
-        <a href="https://arxiv.org" class="button">arXiv</a>
-        <a href="https://github.com" class="button">Model</a>
-        <a href="https://github.com" class="button">Code</a>
-        <a href="https://github.com" class="button">Data</a>
-        <a href="https://github.com" class="button">Platform</a>
-    </section>
 
-    <section class="content">
-        <h2>TableLLM: 按你喜欢的方式操作表格</h2>
-        <!-- 在这里添加更多内容 -->
-    </section>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-1 publication-title">TableLLM: Enabling Tabular Data Manipulation by LLMs in Real Office Usage Scenarios</h2>
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Xiaokang Zhang<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Jing Zhang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Zeyao Ma<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Yang Li<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Bohan Zhang<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Guanlin Li<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Zijun Yao<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Kangli Xu<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Jinchang Zhou<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Daniel Zhang-Li<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Jifan Yu<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Shu Zhao<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Juanzi Li<sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> School of Information, Renmin University of China, China</span><br>
+            <span class="author-block"><sup>2</sup>Computer Science, Tsinghua University</span><br>
+            <span class="author-block"><sup>3</sup> Computer Science, Anhui University, China</span><br>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.19318"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Model Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/RUCKBReasoning/TableLLM-13b"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-cube"></i>
+                  </span>
+                  <span>Model</span>
+                  </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/RUCKBReasoning/TableLLM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/RUCKBReasoning/TableLLM-SFT"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <!-- Platform Link. -->
+              <span class="link-block">
+                <a href="http://36.103.203.47:27824/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-desktop"></i>
+                  </span>
+                  <span>Platform</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/platform.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Table Manipulation using TableLLM on our platform
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce TableLLM, a robust large language model (LLM) with 13 billion parameters, 
+            purpose-built for proficiently handling tabular data manipulation tasks, whether they are 
+            embedded within documents or spreadsheets, catering to real-world office scenarios.
+            We propose a distant supervision method for training, which comprises a reasoning process 
+            extension strategy, aiding in training LLMs to understand reasoning patterns more effectively 
+            as well as a cross-way validation strategy, ensuring the quality of the self-created data.
+            To evaluate the performance of TableLLM, we have crafted a benchmark tailored to address 
+            both document and spreadsheet formats as well as constructed a well-organized evaluation 
+            pipeline capable of handling both scenarios. Thorough evaluations underscore the advantages 
+            of TableLLM when compared to various existing general-purpose and tabular data-focused LLMs.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <div class="publication-video">
+          <img src="static/images/overview.png"/>
+        </div>
+      </div>
+    </div>
+    <!--/ Overview -->
+  </div>
+
+  <div class="container is-max-desktop">
+    <!-- Evaluation Results -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Evaluation Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            We evaluate the code solution generation ability of TableLLM on three benchmarks: 
+            WikiSQL, Spider and Self-created table operation benchmark. 
+            The text answer generation ability is tested on four benchmarks: 
+            WikiTableQuestion (WikiTQ), TAT-QA, FeTaQA and OTTQA. 
+            The evaluation result is shown below:
+          </p>
+        </div>
+        <figure class='table-figure'>
+          <table>
+            <thead><tr><th style='text-align:left;' ><span>Model</span></th><th style='text-align:center;' ><span>WikiTQ</span></th><th style='text-align:center;' ><span>TAT-QA</span></th><th style='text-align:center;' ><span>FeTaQA</span></th><th style='text-align:center;' ><span>OTTQA</span></th><th style='text-align:center;' ><span>WikiSQL</span></th><th style='text-align:center;' ><span>Spider</span></th><th style='text-align:center;' ><span>Self-created</span></th><th style='text-align:center;' ><span>Average</span></th></tr></thead>
+            <tbody>
+              <tr><td style='text-align:left;' ><span>TaPEX</span></td><td style='text-align:center;' ><span>38.5</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>83.9</span></td><td style='text-align:center;' ><span>15.0</span></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>45.8</span></td></tr>
+              <tr><td style='text-align:left;' ><span>TaPas</span></td><td style='text-align:center;' ><span>31.5</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>74.2</span></td><td style='text-align:center;' ><span>23.1</span></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>42.9</span></td></tr>
+              <tr><td style='text-align:left;' ><span>TableLlama</span></td><td style='text-align:center;' ><span>24.0</span></td><td style='text-align:center;' ><span>22.2</span></td><td style='text-align:center;' ><span>20.5</span></td><td style='text-align:center;' ><span>6.4</span></td><td style='text-align:center;' ><span>43.7</span></td><td style='text-align:center;' ><span>9.0</span></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>20.7</span></td></tr>
+              <tr><td style='text-align:left;' ><span>GPT3.5</span></td><td style='text-align:center;' ><span>58.5</span></td><td style='text-align:center;' ><ins><span>72.1</span></ins></td><td style='text-align:center;' ><span>71.2</span></td><td style='text-align:center;' ><span>60.8</span></td><td style='text-align:center;' ><span>81.7</span></td><td style='text-align:center;' ><span>67.4</span></td><td style='text-align:center;' ><span>77.1</span></td><td style='text-align:center;' ><span>69.8</span></td></tr>
+              <tr><td style='text-align:left;' ><span>GPT4</span></td><td style='text-align:center;' ><strong><span>74.1</span></strong></td><td style='text-align:center;' ><strong><span>77.1</span></strong></td><td style='text-align:center;' ><strong><span>78.4</span></strong></td><td style='text-align:center;' ><strong><span>69.5</span></strong></td><td style='text-align:center;' ><span>84.0</span></td><td style='text-align:center;' ><span>69.5</span></td><td style='text-align:center;' ><span>77.8</span></td><td style='text-align:center;' ><strong><span>75.8</span></strong></td></tr>
+              <tr><td style='text-align:left;' ><span>Llama2-Chat (13B)</span></td><td style='text-align:center;' ><span>48.8</span></td><td style='text-align:center;' ><span>49.6</span></td><td style='text-align:center;' ><span>67.7</span></td><td style='text-align:center;' ><span>61.5</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>–</span></td><td style='text-align:center;' ><span>56.9</span></td></tr>
+              <tr><td style='text-align:left;' ><span>CodeLlama (13B)</span></td><td style='text-align:center;' ><span>43.4</span></td><td style='text-align:center;' ><span>47.2</span></td><td style='text-align:center;' ><span>57.2</span></td><td style='text-align:center;' ><span>49.7</span></td><td style='text-align:center;' ><span>38.3</span></td><td style='text-align:center;' ><span>21.9</span></td><td style='text-align:center;' ><span>47.6</span></td><td style='text-align:center;' ><span>43.6</span></td></tr>
+              <tr><td style='text-align:left;' ><span>Deepseek-Coder (33B)</span></td><td style='text-align:center;' ><span>6.5</span></td><td style='text-align:center;' ><span>11.0</span></td><td style='text-align:center;' ><span>7.1</span></td><td style='text-align:center;' ><span>7.4</span></td><td style='text-align:center;' ><span>72.5</span></td><td style='text-align:center;' ><span>58.4</span></td><td style='text-align:center;' ><span>73.9</span></td><td style='text-align:center;' ><span>33.8</span></td></tr>
+              <tr><td style='text-align:left;' ><span>StructGPT (GPT3.5)</span></td><td style='text-align:center;' ><span>52.5</span></td><td style='text-align:center;' ><span>27.5</span></td><td style='text-align:center;' ><span>11.8</span></td><td style='text-align:center;' ><span>14.0</span></td><td style='text-align:center;' ><span>67.8</span></td><td style='text-align:center;' ><strong><span>84.8</span></strong></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>48.9</span></td></tr>
+              <tr><td style='text-align:left;' ><span>Binder (GPT3.5)</span></td><td style='text-align:center;' ><span>61.6</span></td><td style='text-align:center;' ><span>12.8</span></td><td style='text-align:center;' ><span>6.8</span></td><td style='text-align:center;' ><span>5.1</span></td><td style='text-align:center;' ><span>78.6</span></td><td style='text-align:center;' ><span>52.6</span></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>42.5</span></td></tr>
+              <tr><td style='text-align:left;' ><span>DATER (GPT3.5)</span></td><td style='text-align:center;' ><span>53.4</span></td><td style='text-align:center;' ><span>28.4</span></td><td style='text-align:center;' ><span>18.3</span></td><td style='text-align:center;' ><span>13.0</span></td><td style='text-align:center;' ><span>58.2</span></td><td style='text-align:center;' ><span>26.5</span></td><td style='text-align:center;' ><span>/</span></td><td style='text-align:center;' ><span>37.0</span></td></tr>
+              <tr><td style='text-align:left;' ><span>TableLLM-7B (Ours)</span></td><td style='text-align:center;' ><span>58.8</span></td><td style='text-align:center;' ><span>66.9</span></td><td style='text-align:center;' ><span>72.6</span></td><td style='text-align:center;' ><ins><span>63.1</span></ins></td><td style='text-align:center;' ><ins><span>86.6</span></ins></td><td style='text-align:center;' ><span>82.6</span></td><td style='text-align:center;' ><ins><span>78.8</span></ins></td><td style='text-align:center;' ><span>72.8</span></td></tr>
+              <tr><td style='text-align:left;' ><span>TableLLM-13B (Ours)</span></td><td style='text-align:center;' ><ins><span>62.4</span></ins></td><td style='text-align:center;' ><span>68.2</span></td><td style='text-align:center;' ><ins><span>74.5</span></ins></td><td style='text-align:center;' ><span>62.5</span></td><td style='text-align:center;' ><strong><span>90.7</span></strong></td><td style='text-align:center;' ><ins><span>83.4</span></ins></td><td style='text-align:center;' ><strong><span>80.8</span></strong></td><td style='text-align:center;' ><ins><span>74.7</span></ins></td></tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
+    </div>
+    
+    <!-- Contact -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Contact</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you have any questions, we encourage you to either create Github issues 
+            or get in touch with us at <a href="mailto:zhang2718@ruc.edu.cn">zhang2718@ruc.edu.cn</a>, 
+            <a href="mailto:zeyaoma@ruc.edu.cn">zeyaoma@ruc.edu.cn</a> or
+            <a href="mailto:zhang-jing@ruc.edu.cn">zhang-jing@ruc.edu.cn</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <b>This webpage is intended for academic purposes, not for commercial promotion.</b>
+          </p>
+          <p>
+            It is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
