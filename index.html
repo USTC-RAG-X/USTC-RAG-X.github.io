@@ -504,6 +504,103 @@
               Retrieval is a crucial step in the RAG process. In this subsection, we analyze different retrieval techniques and their performance in extracting relevant information from knowledge sources. We also explore the trade-offs between speed and accuracy in various retrieval methods.
             </p>
           </div>
+          <!-- First Table for Retrieval Comparison -->
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Comparison of performance with and without broad retrieval.</caption>
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                  <th>Processing Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Broad Retrieval (w/)</td>
+                  <td><b>31.71%</b></td>
+                  <td><b>41.50%</b></td>
+                  <td>26.79%</td>
+                  <td><b>-9.79%</b></td>
+                  <td><b>8166.59s</b></td>
+                </tr>
+                <tr>
+                  <td>Broad Retrieval (w/o)</td>
+                  <td>28.94%</td>
+                  <td>42.65%</td>
+                  <td>28.42%</td>
+                  <td>-13.71%</td>
+                  <td>93459.87s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Figure for Retrieval Methods Comparison -->
+          <figure class="image is-centered">
+            <img src="static/images/Dense_Sparse1.pdf" alt="Performance of varying retrieval methods in RAG">
+            <figcaption>Performance of varying retrieval methods in RAG.</figcaption>
+          </figure>
+
+          <!-- Second Table for Reranker Configurations -->
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Performance of reranker configurations in RAG.</caption>
+              <thead>
+                <tr>
+                  <th>Config.</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>(3, 3)</td>
+                  <td>24.07%</td>
+                  <td><b>43.18%</b></td>
+                  <td>32.75%</td>
+                  <td><b>-19.11%</b></td>
+                </tr>
+                <tr>
+                  <td>(3, 5)</td>
+                  <td>24.87%</td>
+                  <td>44.06%</td>
+                  <td>31.07%</td>
+                  <td>-19.18%</td>
+                </tr>
+                <tr>
+                  <td>(3, 10)</td>
+                  <td>24.28%</td>
+                  <td>45.88%</td>
+                  <td>29.83%</td>
+                  <td>-21.59%</td>
+                </tr>
+                <tr>
+                  <td>(3, 20)</td>
+                  <td>24.80%</td>
+                  <td>46.32%</td>
+                  <td>28.88%</td>
+                  <td>-21.52%</td>
+                </tr>
+                <tr>
+                  <td>(3, ALL)</td>
+                  <td><b>24.95%</b></td>
+                  <td>46.32%</td>
+                  <td>28.74%</td>
+                  <td>-21.37%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="has-text-justified">
+              <em>Note:</em> (3, X) denotes retrieval of X chunks, with (3, ALL) indicating all chunks passed directly.
+            </p>
+          </div>
+          
   
           <!-- Knowledge Reasoning Subsection -->
           <div class="content has-text-justified">
