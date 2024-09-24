@@ -277,6 +277,106 @@
   </div>
 
 
+
+    <div class="container is-max-desktop">
+      <!-- Benchmark Evaluation Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Benchmark Evaluation of RAG</h2>
+          <div class="content has-text-justified">
+            <p>Comparative analysis of RAG performance across different external knowledge configurations.</p>
+          </div>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>External Knowledge</th>
+                  <th>Method</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>None</td>
+                  <td>LLM-Only</td>
+                  <td>15.61%</td>
+                  <td>20.42%</td>
+                  <td>63.97%</td>
+                  <td>-4.81%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">5 Web</td>
+                  <td>CRAG</td>
+                  <td>7.51%</td>
+                  <td>8.68%</td>
+                  <td>83.81%</td>
+                  <td>-1.16%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>24.87%</td>
+                  <td>22.10%</td>
+                  <td>53.03%</td>
+                  <td>2.77%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">Mock API</td>
+                  <td>CRAG</td>
+                  <td>8.53%</td>
+                  <td><b>1.60%</b></td>
+                  <td>89.86%</td>
+                  <td>6.93%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>29.03%</td>
+                  <td>10.86%</td>
+                  <td>60.10%</td>
+                  <td><b>18.16%</b></td>
+                </tr>
+                <tr>
+                  <td rowspan="2">5 Web + Mock API</td>
+                  <td>CRAG</td>
+                  <td>15.10%</td>
+                  <td>7.95%</td>
+                  <td>76.95%</td>
+                  <td>7.15%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>32.53%</td>
+                  <td>23.12%</td>
+                  <td>44.35%</td>
+                  <td>9.41%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">50 Web + Mock API</td>
+                  <td>CRAG</td>
+                  <td>14.22%</td>
+                  <td>8.90%</td>
+                  <td>76.88%</td>
+                  <td>5.32%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td><b>35.16%</b></td>
+                  <td>26.26%</td>
+                  <td>38.58%</td>
+                  <td>8.90%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
+  
   <div class="container is-max-desktop">
     <!-- Contact -->
     <div class="columns is-centered">
