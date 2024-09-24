@@ -2,4 +2,4 @@
 
 Home page of RAG-X online platform.
 
-The website template is from Nerfies.
+The website template is from Nerfies. 
