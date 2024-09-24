@@ -157,5 +157,6 @@ body {
 }
 
 figcaption {
+  font-style: normal; /* 设置所有 <figcaption> 为正常字体 */
   text-align: center; /* 使所有 <figcaption> 居中对齐 */
 }
