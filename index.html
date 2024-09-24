@@ -732,6 +732,151 @@
             <p>
               The performance of RAG frameworks can be significantly influenced by the choice of hyperparameters. In this subsection, we present a detailed study on the impact of various hyperparameter configurations and provide recommendations for optimal settings based on different scenarios.
             </p>
+
+            <table style="width: 100%; text-align: center;">
+              <caption>Table 6: Performance comparison of embedding models.</caption>
+              <thead>
+                  <tr>
+                      <th>Model</th>
+                      <th>Acc.</th>
+                      <th>Halluc.</th>
+                      <th>Miss.</th>
+                      <th>Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>BGE-small</td>
+                      <td>24.65%</td>
+                      <td>38.95%</td>
+                      <td>36.40%</td>
+                      <td>-14.30%</td>
+                  </tr>
+                  <tr>
+                      <td>BGE-large</td>
+                      <td>22.83%</td>
+                      <td><strong>34.35%</strong></td>
+                      <td>42.82%</td>
+                      <td><strong>-11.52%</strong></td>
+                  </tr>
+                  <tr>
+                      <td>BGE-M3</td>
+                      <td><strong>25.09%</strong></td>
+                      <td>41.21%</td>
+                      <td>33.70%</td>
+                      <td>-16.12%</td>
+                  </tr>
+              </tbody>
+          </table>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_size.png" alt="Effect of chunk size on RAG performance">
+            <figcaption>Figure 5: Effect of chunk size on RAG performance.</figcaption>
+          </figure>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_overlap.png" alt="Impact of chunk overlap on RAG performance">
+            <figcaption>Figure 6: Impact of chunk overlap on RAG performance.</figcaption>
+          </figure>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/temperature.png" alt="Performance across different temperature settings">
+            <figcaption>Figure 7: Performance across different temperature settings.</figcaption>
+          </figure>
+
+          <table style="width: 100%; text-align: center; border-collapse: collapse;">
+            <caption>Performance comparison between LLaMA 3.1 8B and Qwen2-7B with CoT prompting.</caption>
+            <thead>
+                <tr>
+                    <th style="border-bottom: 2px solid #000;">Model</th>
+                    <th style="border-bottom: 2px solid #000;">Acc.</th>
+                    <th style="border-bottom: 2px solid #000;">Halluc.</th>
+                    <th style="border-bottom: 2px solid #000;">Miss.</th>
+                    <th style="border-bottom: 2px solid #000;">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LLaMA 3.1 8B</td>
+                    <td>13.20%</td>
+                    <td><strong>10.50%</strong></td>
+                    <td>76.29%</td>
+                    <td><strong>2.70%</strong></td>
+                </tr>
+                <tr>
+                    <td>Qwen2-7B</td>
+                    <td><strong>26.19%</strong></td>
+                    <td>27.43%</td>
+                    <td>46.39%</td>
+                    <td>-1.23%</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="border-top: 2px solid #000;"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+          <caption>Comparison of top-p settings on RAG performance.</caption>
+          <thead>
+              <tr>
+                  <th style="border-bottom: 2px solid #000;">Top-p</th>
+                  <th style="border-bottom: 2px solid #000;">Acc.</th>
+                  <th style="border-bottom: 2px solid #000;">Halluc.</th>
+                  <th style="border-bottom: 2px solid #000;">Miss.</th>
+                  <th style="border-bottom: 2px solid #000;">Score</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>0.6</td>
+                  <td>22.17%</td>
+                  <td>42.23%</td>
+                  <td>35.59%</td>
+                  <td>-20.06%</td>
+              </tr>
+              <tr>
+                  <td>0.7</td>
+                  <td>25.53%</td>
+                  <td>38.88%</td>
+                  <td>35.59%</td>
+                  <td>-13.35%</td>
+              </tr>
+              <tr>
+                  <td>0.8</td>
+                  <td>25.75%</td>
+                  <td>38.73%</td>
+                  <td>35.52%</td>
+                  <td>-12.98%</td>
+              </tr>
+              <tr>
+                  <td>0.9</td>
+                  <td>25.89%</td>
+                  <td>38.37%</td>
+                  <td>35.74%</td>
+                  <td>-12.47%</td>
+              </tr>
+              <tr>
+                  <td>1.0</td>
+                  <td><strong>26.11%</strong></td>
+                  <td><strong>38.29%</strong></td>
+                  <td>35.59%</td>
+                  <td><strong>-12.18%</strong></td>
+              </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="5" style="border-top: 2px solid #000;"></td>
+              </tr>
+          </tfoot>
+      </table>
+      
+
           </div>
         </div>
       </div>
