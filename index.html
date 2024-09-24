@@ -505,9 +505,9 @@
             </p>
           </div>
           <!-- First Table for Retrieval Comparison -->
-           <p>The following table compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. 
-            The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like
-             BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. </p>
+           <p>
+            The following table compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. 
+          </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
               <caption>Comparison of performance with and without broad retrieval.</caption>
@@ -542,9 +542,9 @@
             </table>
           </div>
 
-          <p> The following figure  illustrates the trade-offs between dense and sparse retrieval configurations in a RAG system. While higher dense retrieval ratios boost accuracy due to richer semantic understanding,
-             they also elevate hallucination rates,
-             suggesting a risk of contextual misalignment. Conversely, increasing sparse retrieval may lower accuracy and fails to consistently reduce hallucinations, likely because of its dependence on surface-level keyword matching.</p>
+          <p> 
+            The following figure  illustrates the trade-offs between dense and sparse retrieval configurations in a RAG system. While higher dense retrieval ratios boost accuracy due to richer semantic understanding, they also elevate hallucination rates, suggesting a risk of contextual misalignment. Conversely, increasing sparse retrieval may lower accuracy and fails to consistently reduce hallucinations, likely because of its dependence on surface-level keyword matching.
+          </p>
           <!-- Figure for Retrieval Methods Comparison -->
           <figure class="image is-centered">
             <img src="static/images/Dense_Sparse1.png" alt="Performance of varying retrieval methods in RAG">
@@ -552,8 +552,9 @@
           </figure>
 
           <!-- Second Table for Reranker Configurations -->
-           <p>The following table summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. 
-            The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.</p>
+           <p>
+            The following table summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.
+          </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
               <caption>Performance of reranker configurations in RAG.</caption>
