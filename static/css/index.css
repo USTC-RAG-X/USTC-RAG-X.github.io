@@ -156,3 +156,6 @@ body {
   border-radius: 5px;
 }
 
+figcaption {
+  text-align: center; /* 使所有 <figcaption> 居中对齐 */
+}
