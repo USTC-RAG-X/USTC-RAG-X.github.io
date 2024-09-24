@@ -288,10 +288,11 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Benchmark Evaluation of RAG</h2>
           <div class="content has-text-justified">
-            <p>Comparative analysis of RAG performance across different external knowledge configurations.</p>
+           
           </div>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 1: Comparative analysis of RAG performance across different external knowledge configurations.</caption>
               <thead>
                 <tr>
                   <th>External Knowledge</th>
@@ -398,7 +399,7 @@
                       <!-- Table for Knowledge Source Selection -->
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <caption>Performance comparison across different knowledge source selection methods.</caption>
+              <caption>Table 2: Performance comparison across different knowledge source selection methods.</caption>
               <thead>
                 <tr>
                   <th>Phase</th>
@@ -506,11 +507,11 @@
           </div>
           <!-- First Table for Retrieval Comparison -->
            <p>
-            The following table compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. 
+            Table 3  compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. 
           </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <caption>Comparison of performance with and without broad retrieval.</caption>
+              <caption>Table 3: Comparison of performance with and without broad retrieval.</caption>
               <thead>
                 <tr>
                   <th>Setting</th>
@@ -553,11 +554,11 @@
 
           <!-- Second Table for Reranker Configurations -->
            <p>
-            The following table summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.
+            Table 4 summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.
           </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-              <caption>Performance of reranker configurations in RAG.</caption>
+              <caption>Table 4: Performance of reranker configurations in RAG.</caption>
               <thead>
                 <tr>
                   <th>Config.</th>
@@ -617,6 +618,14 @@
             <p>
               Once the relevant knowledge is extracted, reasoning over this information becomes essential. This subsection delves into different reasoning techniques and how they can be effectively combined with retrieval results to generate coherent and accurate responses.
             </p>
+
+            <p> 
+              Figure 2 illustrates the context-dependent impact of incorporating Chain of Thought (CoT) into RAG systems. While CoT aims to enhance logical reasoning, the results indicate that it does not consistently improve performance and can sometimes reduce accuracy, especially when dealing with multiple conflicting knowledge sources.            </p>
+            <!-- Figure for Retrieval Methods Comparison -->
+            <figure class="image is-centered">
+              <img src="static/images/cot.png" alt="Impact of CoT across knowledge sources">
+              <figcaption>Figure 2: Impact of CoT across knowledge sources.</figcaption>
+            </figure>
           </div>
   
           <!-- Impact of Hyperparameter Configurations Subsection -->
