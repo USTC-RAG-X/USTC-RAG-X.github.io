@@ -379,8 +379,156 @@
     </div>
 
 
+  </section>
   
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Empirical Study Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Empirical Study</h2>
+          
+          <!-- Knowledge Source Selection Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Knowledge Source Selection</h3>
+            <p>
+              This section discusses the importance of selecting the right knowledge sources for RAG frameworks. The effectiveness of the generated responses depends heavily on the quality and relevance of the external knowledge sources. Various selection strategies are compared to determine the optimal method for different types of queries.
+            </p>
+                      <!-- Table for Knowledge Source Selection -->
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Performance comparison across different knowledge source selection methods.</caption>
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Experiment Setting</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="7">Manual Setting</td>
+                  <td>LLM</td>
+                  <td>13.86%</td>
+                  <td>16.70%</td>
+                  <td>69.44%</td>
+                  <td>-2.84%</td>
+                </tr>
+                <tr>
+                  <td>WEB</td>
+                  <td>16.63%</td>
+                  <td>12.40%</td>
+                  <td>70.97%</td>
+                  <td>4.23%</td>
+                </tr>
+                <tr>
+                  <td>Mock API</td>
+                  <td>29.18%</td>
+                  <td>10.14%</td>
+                  <td>55.26%</td>
+                  <td><b>19.04%</b></td>
+                </tr>
+                <tr>
+                  <td>ALL</td>
+                  <td>17.07%</td>
+                  <td><b>8.83%</b></td>
+                  <td>74.11%</td>
+                  <td>8.24%</td>
+                </tr>
+                <tr>
+                  <td>LLM+WEB</td>
+                  <td>13.20%</td>
+                  <td>10.50%</td>
+                  <td>76.29%</td>
+                  <td>2.70%</td>
+                </tr>
+                <tr>
+                  <td>LLM+Mock API</td>
+                  <td>21.88%</td>
+                  <td>10.21%</td>
+                  <td>67.91%</td>
+                  <td>11.67%</td>
+                </tr>
+                <tr>
+                  <td>LLM+ALL</td>
+                  <td>17.72%</td>
+                  <td><b>8.83%</b></td>
+                  <td>73.45%</td>
+                  <td>8.90%</td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Predefined Path</td>
+                  <td>LLM+WEB</td>
+                  <td>24.00%</td>
+                  <td>22.61%</td>
+                  <td>53.39%</td>
+                  <td>1.39%</td>
+                </tr>
+                <tr>
+                  <td>LLM+Mock API</td>
+                  <td><b>36.62%</b></td>
+                  <td>25.97%</td>
+                  <td>37.42%</td>
+                  <td>10.65%</td>
+                </tr>
+                <tr>
+                  <td>LLM+ALL</td>
+                  <td><b>36.62%</b></td>
+                  <td>39.82%</td>
+                  <td>23.56%</td>
+                  <td>-3.20%</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Agent-Based Path</td>
+                  <td>Agent</td>
+                  <td>25.31%</td>
+                  <td>21.59%</td>
+                  <td>53.10%</td>
+                  <td>3.72%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+
+          </div>
+          
+          <!-- Retrieval for Knowledge Extraction Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Retrieval for Knowledge Extraction</h3>
+            <p>
+              Retrieval is a crucial step in the RAG process. In this subsection, we analyze different retrieval techniques and their performance in extracting relevant information from knowledge sources. We also explore the trade-offs between speed and accuracy in various retrieval methods.
+            </p>
+          </div>
   
+          <!-- Knowledge Reasoning Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Knowledge Reasoning</h3>
+            <p>
+              Once the relevant knowledge is extracted, reasoning over this information becomes essential. This subsection delves into different reasoning techniques and how they can be effectively combined with retrieval results to generate coherent and accurate responses.
+            </p>
+          </div>
+  
+          <!-- Impact of Hyperparameter Configurations Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Impact of Hyperparameter Configurations</h3>
+            <p>
+              The performance of RAG frameworks can be significantly influenced by the choice of hyperparameters. In this subsection, we present a detailed study on the impact of various hyperparameter configurations and provide recommendations for optimal settings based on different scenarios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+<section class="section">
   <div class="container is-max-desktop">
     <!-- Contact -->
     <div class="columns is-centered">
