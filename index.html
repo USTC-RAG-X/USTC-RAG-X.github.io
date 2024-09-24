@@ -626,8 +626,106 @@
               <img src="static/images/cot.png" alt="Impact of CoT across knowledge sources">
               <figcaption>Figure 2: Impact of CoT across knowledge sources.</figcaption>
             </figure>
+
+
+            <p>Table 5 presents the impact of few-shot learning on RAG systems, particularly in identifying false premises across various domains. The results show that the model performs best under 0-shot conditions. However, as more examples are introduced, performance on these questions declines due to overfitting and noise. Despite this, overall accuracy improves with few-shot examples, which provide task-specific guidance. Cross-domain examples also enhance generalization and reduce hallucination rates, demonstrating the value of diverse examples in broadening the model's adaptability across different query types.</p>
+            <table style="width:50%; margin:auto; border-collapse: collapse;">
+              <caption style="caption-side: top; font-weight: bold;">Table 5: Impact of few-shot learning on LLM reasoning.</caption>
+              <thead>
+                  <tr>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Category</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>N</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Acc.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Halluc.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Miss.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Score</strong></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;" rowspan="4">Overall</td>
+                      <td style="border: 1px solid black; padding: 8px;">0</td>
+                      <td style="border: 1px solid black; padding: 8px;">13.20%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>10.50%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">76.29%</td>
+                      <td style="border: 1px solid black; padding: 8px;">2.70%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">1</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.05%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.62%</td>
+                      <td style="border: 1px solid black; padding: 8px;">71.33%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>3.43%</strong></td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>16.12%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">12.98%</td>
+                      <td style="border: 1px solid black; padding: 8px;">70.90%</td>
+                      <td style="border: 1px solid black; padding: 8px;">3.14%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">3</td>
+                      <td style="border: 1px solid black; padding: 8px;">15.17%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.69%</td>
+                      <td style="border: 1px solid black; padding: 8px;">72.14%</td>
+                      <td style="border: 1px solid black; padding: 8px;">2.48%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;" rowspan="4">False Premise</td>
+                      <td style="border: 1px solid black; padding: 8px;">0</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>25.00%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>5.77%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">69.23%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>19.23%</strong></td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">1</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.03%</td>
+                      <td style="border: 1px solid black; padding: 8px;">14.10%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">1.93%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.57%</td>
+                      <td style="border: 1px solid black; padding: 8px;">13.46%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">3.11%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">3</td>
+                      <td style="border: 1px solid black; padding: 8px;">17.31%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.82%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">4.49%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">Cross-Domain</td>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;">18.02%</td>
+                      <td style="border: 1px solid black; padding: 8px;">11.23%</td>
+                      <td style="border: 1px solid black; padding: 8px;">70.75%</td>
+                      <td style="border: 1px solid black; padding: 8px;">6.78%</td>
+                  </tr>
+              </tbody>
+          </table>
+          <p>Figure 3 illustrates the effect of query position within the prompt on RAG system performance. The results show that placing the query after the reference information not only increases accuracy but also reduces hallucination rates, suggesting that the model benefits from having more context before addressing the query. </p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/query_position.png" alt="Impact of query position within prompt">
+            <figcaption>Figure 3: Impact of query position within prompt.</figcaption>
+          </figure>
+
+          <p>Figure 4 illustrates the impact of varying noise chunks on RAG system performance. The results show that as the number of noise chunks increases, accuracy initially dips but then improves, reaching its peak at moderate noise levels. Interestingly, while hallucination rates rise with the introduction of noise, they tend to stabilize and slightly decrease at higher noise levels. This suggests that a certain degree of noise may prompt the model to better filter out irrelevant information.</p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/noise.png" alt="Performance comparison based on noise chunk quantity in RAG">
+            <figcaption>Figure 4: Performance comparison based on noise chunk quantity in RAG.</figcaption>
+          </figure>
+
+
           </div>
-  
+
+          
           <!-- Impact of Hyperparameter Configurations Subsection -->
           <div class="content has-text-justified">
             <h3 class="title is-4">Impact of Hyperparameter Configurations</h3>
