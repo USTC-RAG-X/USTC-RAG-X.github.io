@@ -119,124 +119,98 @@
 <body>
 
 
-  
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h2 class="title is-1 publication-title">RAG-X: A knowledge-centric RAG framework</h2>
-
-          
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Xiaokang Zhang<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Jing Zhang<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Zeyao Ma<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Yang Li<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Bohan Zhang<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Guanlin Li<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Zijun Yao<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Kangli Xu<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Jinchang Zhou<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Daniel Zhang-Li<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Jifan Yu<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Shu Zhao<sup>3</sup>,
-            </span>
-            <span class="author-block">
-              Juanzi Li<sup>2</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup> School of Information, Renmin University of China, China</span><br>
-            <span class="author-block"><sup>2</sup>Computer Science, Tsinghua University</span><br>
-            <span class="author-block"><sup>3</sup> Computer Science, Anhui University, China</span><br>
-          </div> -->
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- Paper Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2409.13694"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+            <h2 class="title is-1 publication-title">RAG-X: A knowledge-centric RAG framework</h2>
+  
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Main Paper Link -->
+                <span class="link-block">
+                  <button id="show-papers" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv Papers</span>
+                  </button>
+                </span>
+  
+                <!-- Hidden Paper Links -->
+                <div id="paper-links" style="display: none;">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2409.13694"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv: RAG-X</span>
+                    </a>
                   </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Model Link. -->
-              <!-- <span class="link-block">
-                <a href="https://huggingface.co/RUCKBReasoning/TableLLM-13b"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-cube"></i>
+  
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/examplepaper2"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv: Paper 2</span>
+                    </a>
                   </span>
-                  <span>Model</span>
+  
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/examplepaper3"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv: Paper 3</span>
+                    </a>
+                  </span>
+                </div>
+                
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/USTCAGI/RAG-X"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                
+                <!-- Dataset Link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/fishsure/RM3QA"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
                   </a>
-              </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/USTCAGI/RAG-X"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/fishsure/RM3QA"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                </a>
-              </span>
-              <!-- Platform Link. -->
-              <!-- <span class="link-block">
-                <a href="http://36.103.203.47:27824/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-desktop"></i>
-                  </span>
-                  <span>Platform</span>
-                  </a>
-              </span> -->
+                </span>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  
+  <script>
+    document.getElementById('show-papers').addEventListener('click', function() {
+      var paperLinks = document.getElementById('paper-links');
+      if (paperLinks.style.display === 'none') {
+        paperLinks.style.display = 'block';
+      } else {
+        paperLinks.style.display = 'none';
+      }
+    });
+  </script>
+  
 
 <!-- <section class="hero teaser">
   <div class="container is-max-desktop">
