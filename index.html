@@ -117,122 +117,97 @@
 </nav>
 
 <body>
-
-
-<section class="hero">
+  <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h2 class="title is-1 publication-title">RAG-X: A knowledge-centric RAG framework with LLM router-driven source selection, multi-step retrieval, and enhanced reasoning using noise chunks</h2>
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Xiaokang Zhang<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Jing Zhang<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              Zeyao Ma<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Yang Li<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Bohan Zhang<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Guanlin Li<sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              Zijun Yao<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Kangli Xu<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Jinchang Zhou<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Daniel Zhang-Li<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Jifan Yu<sup>2</sup>,
-            </span>
-            <span class="author-block">
-              Shu Zhao<sup>3</sup>,
-            </span>
-            <span class="author-block">
-              Juanzi Li<sup>2</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup> School of Information, Renmin University of China, China</span><br>
-            <span class="author-block"><sup>2</sup>Computer Science, Tsinghua University</span><br>
-            <span class="author-block"><sup>3</sup> Computer Science, Anhui University, China</span><br>
-          </div> -->
+          <h2 class="title is-1 publication-title">RAG-X: A knowledge-centric RAG framework</h2>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- Paper Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2409.13694"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+              <!-- arXiv Papers Link (Single Row) -->
+              <div style="margin-bottom: 20px;">
+                <span class="link-block">
+                  <button id="show-papers" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Model Link. -->
-              <!-- <span class="link-block">
-                <a href="https://huggingface.co/RUCKBReasoning/TableLLM-13b"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-cube"></i>
-                  </span>
-                  <span>Model</span>
-                  </a>
-              </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/USTCAGI/RAG-X"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/fishsure/RM3QA"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                </a>
-              </span>
-              <!-- Platform Link. -->
-              <!-- <span class="link-block">
-                <a href="http://36.103.203.47:27824/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-desktop"></i>
-                  </span>
-                  <span>Platform</span>
-                  </a>
-              </span> -->
-            </div>
+                    </span>
+                    <span>arXiv Papers</span>
+                  </button>
+                </span>
+              </div>
 
+              <!-- Hidden Paper Links (Below arXiv Papers Button) -->
+              <div id="paper-links" style="display: none; margin-bottom: 20px;">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2409.13694"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>A Knowledge-Centric Benchmarking Framework</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2409.15337"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Revisiting the Solution of Meta KDD Cup 2024</span>
+                  </a>
+                </span>
+              </div>
+
+              <!-- Code and Dataset Links (Same Row) -->
+              <div style="display: flex; justify-content: center; gap: 20px;">
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/USTCAGI/RAG-X"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+
+                <!-- Dataset Link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/fishsure/RM3QA"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.getElementById('show-papers').addEventListener('click', function() {
+    var paperLinks = document.getElementById('paper-links');
+    if (paperLinks.style.display === 'none') {
+      paperLinks.style.display = 'block';
+    } else {
+      paperLinks.style.display = 'none';
+    }
+  });
+</script>
+
+  
+  
+
+  
 
 <!-- <section class="hero teaser">
   <div class="container is-max-desktop">
@@ -277,6 +252,612 @@
   </div>
 
 
+
+    <div class="container is-max-desktop">
+      <!-- Benchmark Evaluation Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Benchmark Evaluation of RAG</h2>
+          <div class="content has-text-justified">
+           
+          </div>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 1: Comparative analysis of RAG performance across different external knowledge configurations.</caption>
+              <thead>
+                <tr>
+                  <th>External Knowledge</th>
+                  <th>Method</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>None</td>
+                  <td>LLM-Only</td>
+                  <td>15.61%</td>
+                  <td>20.42%</td>
+                  <td>63.97%</td>
+                  <td>-4.81%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">5 Web</td>
+                  <td>CRAG</td>
+                  <td>7.51%</td>
+                  <td>8.68%</td>
+                  <td>83.81%</td>
+                  <td>-1.16%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>24.87%</td>
+                  <td>22.10%</td>
+                  <td>53.03%</td>
+                  <td>2.77%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">Mock API</td>
+                  <td>CRAG</td>
+                  <td>8.53%</td>
+                  <td><b>1.60%</b></td>
+                  <td>89.86%</td>
+                  <td>6.93%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>29.03%</td>
+                  <td>10.86%</td>
+                  <td>60.10%</td>
+                  <td><b>18.16%</b></td>
+                </tr>
+                <tr>
+                  <td rowspan="2">5 Web + Mock API</td>
+                  <td>CRAG</td>
+                  <td>15.10%</td>
+                  <td>7.95%</td>
+                  <td>76.95%</td>
+                  <td>7.15%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td>32.53%</td>
+                  <td>23.12%</td>
+                  <td>44.35%</td>
+                  <td>9.41%</td>
+                </tr>
+                <tr>
+                  <td rowspan="2">50 Web + Mock API</td>
+                  <td>CRAG</td>
+                  <td>14.22%</td>
+                  <td>8.90%</td>
+                  <td>76.88%</td>
+                  <td>5.32%</td>
+                </tr>
+                <tr>
+                  <td>RAG-X</td>
+                  <td><b>35.16%</b></td>
+                  <td>26.26%</td>
+                  <td>38.58%</td>
+                  <td>8.90%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+  
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Empirical Study Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Empirical Study</h2>
+          
+          <!-- Knowledge Source Selection Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Knowledge Source Selection</h3>
+            <p>
+              This section discusses the importance of selecting the right knowledge sources for RAG frameworks. The effectiveness of the generated responses depends heavily on the quality and relevance of the external knowledge sources. Various selection strategies are compared to determine the optimal method for different types of queries.
+            </p>
+                      <!-- Table for Knowledge Source Selection -->
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 2: Performance comparison across different knowledge source selection methods.</caption>
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Experiment Setting</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="7">Manual Setting</td>
+                  <td>LLM</td>
+                  <td>13.86%</td>
+                  <td>16.70%</td>
+                  <td>69.44%</td>
+                  <td>-2.84%</td>
+                </tr>
+                <tr>
+                  <td>WEB</td>
+                  <td>16.63%</td>
+                  <td>12.40%</td>
+                  <td>70.97%</td>
+                  <td>4.23%</td>
+                </tr>
+                <tr>
+                  <td>Mock API</td>
+                  <td>29.18%</td>
+                  <td>10.14%</td>
+                  <td>55.26%</td>
+                  <td><b>19.04%</b></td>
+                </tr>
+                <tr>
+                  <td>ALL</td>
+                  <td>17.07%</td>
+                  <td><b>8.83%</b></td>
+                  <td>74.11%</td>
+                  <td>8.24%</td>
+                </tr>
+                <tr>
+                  <td>LLM+WEB</td>
+                  <td>13.20%</td>
+                  <td>10.50%</td>
+                  <td>76.29%</td>
+                  <td>2.70%</td>
+                </tr>
+                <tr>
+                  <td>LLM+Mock API</td>
+                  <td>21.88%</td>
+                  <td>10.21%</td>
+                  <td>67.91%</td>
+                  <td>11.67%</td>
+                </tr>
+                <tr>
+                  <td>LLM+ALL</td>
+                  <td>17.72%</td>
+                  <td><b>8.83%</b></td>
+                  <td>73.45%</td>
+                  <td>8.90%</td>
+                </tr>
+                <tr>
+                  <td rowspan="3">Predefined Path</td>
+                  <td>LLM+WEB</td>
+                  <td>24.00%</td>
+                  <td>22.61%</td>
+                  <td>53.39%</td>
+                  <td>1.39%</td>
+                </tr>
+                <tr>
+                  <td>LLM+Mock API</td>
+                  <td><b>36.62%</b></td>
+                  <td>25.97%</td>
+                  <td>37.42%</td>
+                  <td>10.65%</td>
+                </tr>
+                <tr>
+                  <td>LLM+ALL</td>
+                  <td><b>36.62%</b></td>
+                  <td>39.82%</td>
+                  <td>23.56%</td>
+                  <td>-3.20%</td>
+                </tr>
+                <tr>
+                  <td>Agent-Based Path</td>
+                  <td>Agent</td>
+                  <td>25.31%</td>
+                  <td>21.59%</td>
+                  <td>53.10%</td>
+                  <td>3.72%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+
+          </div>
+          
+          <!-- Retrieval for Knowledge Extraction Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Retrieval for Knowledge Extraction</h3>
+            <p>
+              Retrieval is a crucial step in the RAG process. In this subsection, we analyze different retrieval techniques and their performance in extracting relevant information from knowledge sources. We also explore the trade-offs between speed and accuracy in various retrieval methods.
+            </p>
+          
+          <!-- First Table for Retrieval Comparison -->
+           <p>
+            Table 3  compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. 
+          </p>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 3: Comparison of performance with and without broad retrieval.</caption>
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                  <th>Processing Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Broad Retrieval (w/)</td>
+                  <td><b>31.71%</b></td>
+                  <td><b>41.50%</b></td>
+                  <td>26.79%</td>
+                  <td><b>-9.79%</b></td>
+                  <td><b>8166.59s</b></td>
+                </tr>
+                <tr>
+                  <td>Broad Retrieval (w/o)</td>
+                  <td>28.94%</td>
+                  <td>42.65%</td>
+                  <td>28.42%</td>
+                  <td>-13.71%</td>
+                  <td>93459.87s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p> 
+            Figure 1 illustrates the trade-offs between dense and sparse retrieval configurations in a RAG system. While higher dense retrieval ratios boost accuracy due to richer semantic understanding, they also elevate hallucination rates, suggesting a risk of contextual misalignment. Conversely, increasing sparse retrieval may lower accuracy and fails to consistently reduce hallucinations, likely because of its dependence on surface-level keyword matching.
+          </p>
+          <!-- Figure for Retrieval Methods Comparison -->
+          <figure class="image is-centered">
+            <img src="static/images/Dense_Sparse1.png" alt="Performance of varying retrieval methods in RAG">
+            <figcaption>Figure 1: Performance of varying retrieval methods in RAG.</figcaption>
+          </figure>
+
+          <!-- Second Table for Reranker Configurations -->
+           <p>
+            Table 4 summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.
+          </p>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 4: Performance of reranker configurations in RAG.</caption>
+              <thead>
+                <tr>
+                  <th>Config.</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>(3, 3)</td>
+                  <td>24.07%</td>
+                  <td><b>43.18%</b></td>
+                  <td>32.75%</td>
+                  <td><b>-19.11%</b></td>
+                </tr>
+                <tr>
+                  <td>(3, 5)</td>
+                  <td>24.87%</td>
+                  <td>44.06%</td>
+                  <td>31.07%</td>
+                  <td>-19.18%</td>
+                </tr>
+                <tr>
+                  <td>(3, 10)</td>
+                  <td>24.28%</td>
+                  <td>45.88%</td>
+                  <td>29.83%</td>
+                  <td>-21.59%</td>
+                </tr>
+                <tr>
+                  <td>(3, 20)</td>
+                  <td>24.80%</td>
+                  <td>46.32%</td>
+                  <td>28.88%</td>
+                  <td>-21.52%</td>
+                </tr>
+                <tr>
+                  <td>(3, ALL)</td>
+                  <td><b>24.95%</b></td>
+                  <td>46.32%</td>
+                  <td>28.74%</td>
+                  <td>-21.37%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="has-text-justified">
+              <em>Note:</em> (3, X) denotes retrieval of X chunks, with (3, ALL) indicating all chunks passed directly.
+            </p>
+          </div>
+        </div>
+  
+          <!-- Knowledge Reasoning Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Knowledge Reasoning</h3>
+            <p>
+              Once the relevant knowledge is extracted, reasoning over this information becomes essential. This subsection delves into different reasoning techniques and how they can be effectively combined with retrieval results to generate coherent and accurate responses.
+            </p>
+
+            <p> 
+              Figure 2 illustrates the context-dependent impact of incorporating Chain of Thought (CoT) into RAG systems. While CoT aims to enhance logical reasoning, the results indicate that it does not consistently improve performance and can sometimes reduce accuracy, especially when dealing with multiple conflicting knowledge sources.            </p>
+            <!-- Figure for Retrieval Methods Comparison -->
+            <figure class="image is-centered">
+              <img src="static/images/cot.png" alt="Impact of CoT across knowledge sources">
+              <figcaption>Figure 2: Impact of CoT across knowledge sources.</figcaption>
+            </figure>
+
+
+            <p>Table 5 presents the impact of few-shot learning on RAG systems, particularly in identifying false premises across various domains. The results show that the model performs best under 0-shot conditions. However, as more examples are introduced, performance on these questions declines due to overfitting and noise. Despite this, overall accuracy improves with few-shot examples, which provide task-specific guidance. Cross-domain examples also enhance generalization and reduce hallucination rates, demonstrating the value of diverse examples in broadening the model's adaptability across different query types.</p>
+            <table style="width:50%; margin:auto; border-collapse: collapse;">
+              <caption style="caption-side: top; font-weight: bold;">Table 5: Impact of few-shot learning on LLM reasoning.</caption>
+              <thead>
+                  <tr>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Category</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>N</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Acc.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Halluc.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Miss.</strong></th>
+                      <th style="border: 1px solid black; padding: 8px;"><strong>Score</strong></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;" rowspan="4">Overall</td>
+                      <td style="border: 1px solid black; padding: 8px;">0</td>
+                      <td style="border: 1px solid black; padding: 8px;">13.20%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>10.50%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">76.29%</td>
+                      <td style="border: 1px solid black; padding: 8px;">2.70%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">1</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.05%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.62%</td>
+                      <td style="border: 1px solid black; padding: 8px;">71.33%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>3.43%</strong></td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>16.12%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">12.98%</td>
+                      <td style="border: 1px solid black; padding: 8px;">70.90%</td>
+                      <td style="border: 1px solid black; padding: 8px;">3.14%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">3</td>
+                      <td style="border: 1px solid black; padding: 8px;">15.17%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.69%</td>
+                      <td style="border: 1px solid black; padding: 8px;">72.14%</td>
+                      <td style="border: 1px solid black; padding: 8px;">2.48%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;" rowspan="4">False Premise</td>
+                      <td style="border: 1px solid black; padding: 8px;">0</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>25.00%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>5.77%</strong></td>
+                      <td style="border: 1px solid black; padding: 8px;">69.23%</td>
+                      <td style="border: 1px solid black; padding: 8px;"><strong>19.23%</strong></td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">1</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.03%</td>
+                      <td style="border: 1px solid black; padding: 8px;">14.10%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">1.93%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;">16.57%</td>
+                      <td style="border: 1px solid black; padding: 8px;">13.46%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">3.11%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">3</td>
+                      <td style="border: 1px solid black; padding: 8px;">17.31%</td>
+                      <td style="border: 1px solid black; padding: 8px;">12.82%</td>
+                      <td style="border: 1px solid black; padding: 8px;">69.87%</td>
+                      <td style="border: 1px solid black; padding: 8px;">4.49%</td>
+                  </tr>
+                  <tr>
+                      <td style="border: 1px solid black; padding: 8px;">Cross-Domain</td>
+                      <td style="border: 1px solid black; padding: 8px;">2</td>
+                      <td style="border: 1px solid black; padding: 8px;">18.02%</td>
+                      <td style="border: 1px solid black; padding: 8px;">11.23%</td>
+                      <td style="border: 1px solid black; padding: 8px;">70.75%</td>
+                      <td style="border: 1px solid black; padding: 8px;">6.78%</td>
+                  </tr>
+              </tbody>
+          </table>
+          <p>Figure 3 illustrates the effect of query position within the prompt on RAG system performance. The results show that placing the query after the reference information not only increases accuracy but also reduces hallucination rates, suggesting that the model benefits from having more context before addressing the query. </p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/query_position.png" alt="Impact of query position within prompt">
+            <figcaption>Figure 3: Impact of query position within prompt.</figcaption>
+          </figure>
+
+          <p>Figure 4 illustrates the impact of varying noise chunks on RAG system performance. The results show that as the number of noise chunks increases, accuracy initially dips but then improves, reaching its peak at moderate noise levels. Interestingly, while hallucination rates rise with the introduction of noise, they tend to stabilize and slightly decrease at higher noise levels. This suggests that a certain degree of noise may prompt the model to better filter out irrelevant information.</p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/noise.png" alt="Performance comparison based on noise chunk quantity in RAG">
+            <figcaption>Figure 4: Performance comparison based on noise chunk quantity in RAG.</figcaption>
+          </figure>
+
+
+          </div>
+
+          
+          <!-- Impact of Hyperparameter Configurations Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Impact of Hyperparameter Configurations</h3>
+            <p>
+              The performance of RAG frameworks can be significantly influenced by the choice of hyperparameters. In this subsection, we present a detailed study on the impact of various hyperparameter configurations and provide recommendations for optimal settings based on different scenarios.
+            </p>
+
+            <table style="width: 100%; text-align: center;">
+              <caption>Table 6: Performance comparison of embedding models.</caption>
+              <thead>
+                  <tr>
+                      <th>Model</th>
+                      <th>Acc.</th>
+                      <th>Halluc.</th>
+                      <th>Miss.</th>
+                      <th>Score</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>BGE-small</td>
+                      <td>24.65%</td>
+                      <td>38.95%</td>
+                      <td>36.40%</td>
+                      <td>-14.30%</td>
+                  </tr>
+                  <tr>
+                      <td>BGE-large</td>
+                      <td>22.83%</td>
+                      <td><strong>34.35%</strong></td>
+                      <td>42.82%</td>
+                      <td><strong>-11.52%</strong></td>
+                  </tr>
+                  <tr>
+                      <td>BGE-M3</td>
+                      <td><strong>25.09%</strong></td>
+                      <td>41.21%</td>
+                      <td>33.70%</td>
+                      <td>-16.12%</td>
+                  </tr>
+              </tbody>
+          </table>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_size.png" alt="Effect of chunk size on RAG performance">
+            <figcaption>Figure 5: Effect of chunk size on RAG performance.</figcaption>
+          </figure>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_overlap.png" alt="Impact of chunk overlap on RAG performance">
+            <figcaption>Figure 6: Impact of chunk overlap on RAG performance.</figcaption>
+          </figure>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/temperature.png" alt="Performance across different temperature settings">
+            <figcaption>Figure 7: Performance across different temperature settings.</figcaption>
+          </figure>
+
+          <table style="width: 100%; text-align: center; border-collapse: collapse;">
+            <caption>Table 7: Performance comparison between LLaMA 3.1 8B and Qwen2-7B with CoT prompting.</caption>
+            <thead>
+                <tr>
+                    <th style="border-bottom: 2px solid #000;">Model</th>
+                    <th style="border-bottom: 2px solid #000;">Acc.</th>
+                    <th style="border-bottom: 2px solid #000;">Halluc.</th>
+                    <th style="border-bottom: 2px solid #000;">Miss.</th>
+                    <th style="border-bottom: 2px solid #000;">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LLaMA 3.1 8B</td>
+                    <td>13.20%</td>
+                    <td><strong>10.50%</strong></td>
+                    <td>76.29%</td>
+                    <td><strong>2.70%</strong></td>
+                </tr>
+                <tr>
+                    <td>Qwen2-7B</td>
+                    <td><strong>26.19%</strong></td>
+                    <td>27.43%</td>
+                    <td>46.39%</td>
+                    <td>-1.23%</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="border-top: 2px solid #000;"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <table style="width: 100%; text-align: center; border-collapse: collapse;">
+          <caption>Talbe 8: Comparison of top-p settings on RAG performance.</caption>
+          <thead>
+              <tr>
+                  <th style="border-bottom: 2px solid #000;">Top-p</th>
+                  <th style="border-bottom: 2px solid #000;">Acc.</th>
+                  <th style="border-bottom: 2px solid #000;">Halluc.</th>
+                  <th style="border-bottom: 2px solid #000;">Miss.</th>
+                  <th style="border-bottom: 2px solid #000;">Score</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>0.6</td>
+                  <td>22.17%</td>
+                  <td>42.23%</td>
+                  <td>35.59%</td>
+                  <td>-20.06%</td>
+              </tr>
+              <tr>
+                  <td>0.7</td>
+                  <td>25.53%</td>
+                  <td>38.88%</td>
+                  <td>35.59%</td>
+                  <td>-13.35%</td>
+              </tr>
+              <tr>
+                  <td>0.8</td>
+                  <td>25.75%</td>
+                  <td>38.73%</td>
+                  <td>35.52%</td>
+                  <td>-12.98%</td>
+              </tr>
+              <tr>
+                  <td>0.9</td>
+                  <td>25.89%</td>
+                  <td>38.37%</td>
+                  <td>35.74%</td>
+                  <td>-12.47%</td>
+              </tr>
+              <tr>
+                  <td>1.0</td>
+                  <td><strong>26.11%</strong></td>
+                  <td><strong>38.29%</strong></td>
+                  <td>35.59%</td>
+                  <td><strong>-12.18%</strong></td>
+              </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="5" style="border-top: 2px solid #000;"></td>
+              </tr>
+          </tfoot>
+      </table>
+      
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+<section class="section">
   <div class="container is-max-desktop">
     <!-- Contact -->
     <div class="columns is-centered">
