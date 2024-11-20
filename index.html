@@ -6,7 +6,7 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RAG-X</title>
+  <title>PruningRAG</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -122,7 +122,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h2 class="title is-1 publication-title">RAG-X: A knowledge-centric RAG framework</h2>
+          <h2 class="title is-1 publication-title">PruningRAG:  Multi-Source Knowledge Pruning for RAG</h2>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -165,7 +165,7 @@
               <div style="display: flex; justify-content: center; gap: 20px;">
                 <!-- Code Link -->
                 <span class="link-block">
-                  <a href="https://github.com/USTCAGI/RAG-X"
+                  <a href="https://github.com/USTCAGI/PruningRAG"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                         <i class="fab fa-github"></i>
@@ -232,7 +232,7 @@
         <div class="content has-text-justified">
           <p>
 
-            Retrieval-Augmented Generation (RAG) enhances generative models by integrating retrieval mechanisms, which allow these models to access and utilize external knowledge sources. Despite its advantages, RAG encounters significant challenges, particularly in effectively handling real-world queries and mitigating hallucinations. The KDD Cup 2024 CRAG competition brings these issues to the forefront by incorporating both web pages and a mock API as knowledge sources, adding the complexity of parsing HTML before large language models (LLMs) can process the information. In this paper, we propose a novel RAG benchmark designed to address these challenges. Our work provides a comprehensive set of experimental results, offering valuable insights for the study of RAG. We thoroughly examine the entire RAG process, including knowledge source selection, retrieval, organization, and reasoning. Key findings from our study include the impact of automated knowledge source selection using agents and the influence of noise chunks on RAG reasoning. Additionally, we conduct detailed experiments to analyze the effects of various hyperparameters on RAG performance. To support further research, we have made our results, the associated code, and a parsed version of the CRAG dataset publicly available, contributing to the advancement of RAG methodologies and establishing a solid foundation for future work in this domain.
+            Retrieval-augmented generation (RAG) is increasingly recognized as an effective approach for mitigating the hallucination of large language models (LLMs) through the integration of external knowledge.  While numerous efforts, most studies focus on  a single type of externeal knowledge source.  However, in real-world applications, most situations involve diverse  knowledge from various sources, yet this area has been less explored. The main dilemma is the lack of a suitable dataset containing multiple knowledge sources and pre-exploration of the associated  issues. To address these challenges, we standardize a benchmark dataset that combines structured and unstructured knowledge across diverse and complementary  domains. Based on this dataset, we further develop a plug-and-play RAG framework, PruningRAG, whose main characteristic is to employ multi-granularity pruning strategies for optimizing the integration of relevant information and minimizing misleading context.  Building upon the standardized dataset and PruningRAG, we also report  a series of  experimental results, as well as insightful findings. Our dataset and  code  are publicly available\footnote{https://github.com/USTCAGI/PruningRAG}, with the aim of advancing future research in the RAG community.
           </p>
         </div>
       </div>
