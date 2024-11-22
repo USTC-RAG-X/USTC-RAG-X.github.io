@@ -261,7 +261,7 @@
         <div class="content has-text-justified"></div>
         <div class="table-container">
           <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-            <caption>Table 1: Comparative analysis of RAG performance across different external knowledge configurations.</caption>
+            <caption>Table 1: Comparative analysis of RAG performance across different external knowledge.</caption>
             <thead>
               <tr>
                 <th>External Knowledge</th>
@@ -391,10 +391,10 @@
           
           <!-- Knowledge Source Selection Subsection -->
           <div class="content has-text-justified">
-            <h3 class="title is-4">Knowledge Source Selection</h3>
+            <h3 class="title is-4">Coarse-Grained Knowledge Pruning</h3>
             <p>
-              This section discusses the importance of selecting the right knowledge sources for RAG frameworks. The effectiveness of the generated responses depends heavily on the quality and relevance of the external knowledge sources. Various selection strategies are compared to determine the optimal method for different types of queries.
-            </p>
+              
+Table 2 evaluates four knowledge utilization strategies: relying solely on internal or external knowledge, combining internal and external sources, prioritizing internal knowledge before external retrieval, and a proposed pruning-based method. The results show that using multiple sources simultaneously often introduces conflicts, while prioritizing internal knowledge can lead to hallucinations. The pruning-based strategy dynamically selects relevant sources per query, optimizing knowledge integration and improving overall performance.  </p>
                       <!-- Table for Knowledge Source Selection -->
                       <div class="table-container">
                         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
@@ -472,15 +472,15 @@
           
           <!-- Retrieval for Knowledge Extraction Subsection -->
           <div class="content has-text-justified">
-            <h3 class="title is-4">Retrieval for Knowledge Extraction</h3>
+            <h3 class="title is-4">Fine-Grained Knowledge Pruning</h3>
             <p>
               Retrieval is a crucial step in the RAG process. In this subsection, we analyze different retrieval techniques and their performance in extracting relevant information from knowledge sources. We also explore the trade-offs between speed and accuracy in various retrieval methods.
             </p>
           
           <!-- First Table for Retrieval Comparison -->
            <p>
-            Table 3  compares the performance of the RAG system with and without a broad retrieval step, where each query is supplemented with 50 web pages—far more than the 5 used in other experiments. The results demonstrate that this broad retrieval phase significantly enhances system efficiency, notably reducing processing time. Sparse retrieval methods like BM25 filter out irrelevant data, allowing dense retrieval to focus on a more targeted subset of external knowledge. 
-          </p>
+            
+Table 3 compares PruningRAG with and without an initial broad retrieval step. The broad retrieval stage enhances efficiency by filtering large external knowledge volumes, reducing latency, and improving precision in the subsequent focused retrieval. This multi-stage pruning approach optimizes both relevance and speed for effective knowledge extraction.  </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
               <caption>Table 3: Comparison of effectiveness and efficiency with and without broad retrieval.</caption>
@@ -511,8 +511,7 @@
           
 
           <p> 
-            Figure 1 illustrates the trade-offs between dense and sparse retrieval configurations in a RAG system. While higher dense retrieval ratios boost accuracy due to richer semantic understanding, they also elevate hallucination rates, suggesting a risk of contextual misalignment. Conversely, increasing sparse retrieval may lower accuracy and fails to consistently reduce hallucinations, likely because of its dependence on surface-level keyword matching.
-          </p>
+            Figure 1 highlights the superiority of dense search over sparse search due to its ability to capture semantic relationships. While combining dense and sparse search improves accuracy compared to sparse search alone, it also increases hallucinations, indicating challenges in pruning misleading context effectively. </p>
           <!-- Figure for Retrieval Methods Comparison -->
           <figure class="image is-centered">
             <img src="static/images/Dense_Sparse1.png" alt="Performance of varying retrieval methods in RAG">
@@ -521,8 +520,8 @@
 
           <!-- Second Table for Reranker Configurations -->
            <p>
-            Table 4 summarizes the impact of various reranker configurations on RAG system performance, focusing on different retrieval chunk sizes. The results show that as the number of retrieved chunks increases,  hallucination  rates rise, while accuracy remains stable, suggesting that the reranker performs better with smaller, more focused sets.
-          </p>
+            Table 4 evaluates re-ranking configurations in PruningRAG, showing that increasing retrieval blocks slightly improves accuracy but raises hallucination rates. This highlights the reranker's limitations in pruning misleading information, emphasizing the importance of the preceding retrieval process.
+           </p>
           <div class="table-container">
             <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
               <caption>Table 4: Performance of reranker configurations in RAG.</caption>
@@ -583,19 +582,21 @@
           <div class="content has-text-justified">
             <h3 class="title is-4">Knowledge Reasoning</h3>
             <p>
-              Once the relevant knowledge is extracted, reasoning over this information becomes essential. This subsection delves into different reasoning techniques and how they can be effectively combined with retrieval results to generate coherent and accurate responses.
-            </p>
+              In this subsection, we analyze the impact of our strategies for enhancing LLM utilization and reasoning over pruned knowledge, including Chain-of-Thought (CoT) reasoning, In-Context Learning (ICL), noise chunk fusion, query placement in prompts, and our confidence detection strategy.
+             </p>
 
             <p> 
-              Figure 2 illustrates the context-dependent impact of incorporating Chain of Thought (CoT) into RAG systems. While CoT aims to enhance logical reasoning, the results indicate that it does not consistently improve performance and can sometimes reduce accuracy, especially when dealing with multiple conflicting knowledge sources.            </p>
-            <!-- Figure for Retrieval Methods Comparison -->
+              Figure 2 illustrates the impact of CoT reasoning in PruningRAG, depending on external knowledge quality. With noisy, unstructured data, CoT effectively filters irrelevant information and reduces hallucinations, improving accuracy. However, with reliable API-based sources, CoT's cautious multi-step reasoning may lower accuracy despite reducing hallucinations, highlighting a trade-off between precision and conservatism.
+               <!-- Figure for Retrieval Methods Comparison -->
             <figure class="image is-centered">
               <img src="static/images/cot.png" alt="Impact of CoT across knowledge sources">
               <figcaption>Figure 2: Impact of CoT across knowledge sources.</figcaption>
             </figure>
 
 
-            <p>Table 5 presents the impact of few-shot learning on RAG systems, particularly in identifying false premises across various domains. The results show that the model performs best under 0-shot conditions. However, as more examples are introduced, performance on these questions declines due to overfitting and noise. Despite this, overall accuracy improves with few-shot examples, which provide task-specific guidance. Cross-domain examples also enhance generalization and reduce hallucination rates, demonstrating the value of diverse examples in broadening the model's adaptability across different query types.</p>
+            <p>Table 5 examines the effect of false premise examples on LLM performance in PruningRAG. Few-shot examples improve overall task comprehension and reasoning but reduce accuracy on false premise questions compared to zero-shot. Cross-domain examples outperform domain-specific ones, mitigating overfitting and enhancing reasoning through greater variability.
+      
+            </p>
             <div class="table-container">
               <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                 <caption>Table 5: Impact of few-shot learning on LLM reasoning.</caption>
@@ -719,13 +720,86 @@
               </table>
             </div>
             
-          <p>Figure 3 illustrates the effect of query position within the prompt on RAG system performance. The results show that placing the query after the reference information not only increases accuracy but also reduces hallucination rates, suggesting that the model benefits from having more context before addressing the query. </p>
+            <p>This experiment evaluates the PruningRAG system's performance under various confidence evaluation strategies and prompt instructions to mitigate hallucinations. Two prompts were tested: one without guidance and another instructing the model to respond with "I don't know" when uncertain. Confidence methods included context sufficiency, entropy-based evaluation, and their combination.
+
+              As shown in Table 6, instructing the model to say "I don't know" reduced hallucinations across all methods, albeit with a slight drop in accuracy due to increased caution. Entropy-based evaluation combined with explicit prompts achieved the best balance, minimizing errors while maintaining performance. Combining both checks produced conservative responses, ideal for high-stakes scenarios, while entropy-based evaluation with prompts offered a balanced solution for general use.
+            </p>
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <caption>Table 6: Performance comparison of confidence evaluation methods.</caption>
+                  <thead>
+                    <tr>
+                      <th>Confidence Eval</th>
+                      <th>Acc.</th>
+                      <th>Hall.</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>None (w/o inst)</td>
+                      <td><b>44.78%</b></td>
+                      <td>55.14%</td>
+                      <td>-10.36%</td>
+                    </tr>
+                    <tr>
+                      <td>Context Check (w/o inst)</td>
+                      <td>30.71%</td>
+                      <td>18.17%</td>
+                      <td>12.55%</td>
+                    </tr>
+                    <tr>
+                      <td>Entropy-Based (w/o inst)</td>
+                      <td>42.23%</td>
+                      <td>43.11%</td>
+                      <td>-0.88%</td>
+                    </tr>
+                    <tr>
+                      <td>Combined (w/o inst)</td>
+                      <td>29.03%</td>
+                      <td><b>15.54%</b></td>
+                      <td><b>13.49%</b></td>
+                    </tr>
+                    <tr>
+                      <td>None (w/ inst)</td>
+                      <td><b>31.87%</b></td>
+                      <td>12.25%</td>
+                      <td>19.62%</td>
+                    </tr>
+                    <tr>
+                      <td>Context Check (w/ inst)</td>
+                      <td>26.40%</td>
+                      <td>10.21%</td>
+                      <td>16.19%</td>
+                    </tr>
+                    <tr>
+                      <td>Entropy-Based (w/ inst)</td>
+                      <td>30.49%</td>
+                      <td>10.36%</td>
+                      <td><b>20.13%</b></td>
+                    </tr>
+                    <tr>
+                      <td>Combined (w/ inst)</td>
+                      <td>24.73%</td>
+                      <td><b>9.04%</b></td>
+                      <td>15.68%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+          <p>Figure 3 highlights the importance of query positioning in prompts. Placing the query after the pruned context improves accuracy and reduces hallucinations, as the model benefits from full context before responding. This avoids the “query forgetting” effect in lengthy contexts, emphasizing the need to position queries after extensive retrieved information for optimal response quality.
+             </p>
           <figure class="image is-centered"></figure>
             <img src="static/images/query_position.png" alt="Impact of query position within prompt">
             <figcaption>Figure 3: Impact of query position within prompt.</figcaption>
           </figure>
 
-          <p>Figure 4 illustrates the impact of varying noise chunks on RAG system performance. The results show that as the number of noise chunks increases, accuracy initially dips but then improves, reaching its peak at moderate noise levels. Interestingly, while hallucination rates rise with the introduction of noise, they tend to stabilize and slightly decrease at higher noise levels. This suggests that a certain degree of noise may prompt the model to better filter out irrelevant information.</p>
+          <p>Figure 4 shows the impact of noise chunks in  PruningRAG. Moderate noise improves accuracy and performance by priming the model to distinguish relevant from irrelevant information. However, excessive noise degrades performance, underscoring the balance needed for optimal results.
+
+          </p>
           <figure class="image is-centered"></figure>
             <img src="static/images/noise.png" alt="Performance comparison based on noise chunk quantity in RAG">
             <figcaption>Figure 4: Performance comparison based on noise chunk quantity in RAG.</figcaption>
