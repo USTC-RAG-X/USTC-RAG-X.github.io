@@ -598,16 +598,11 @@ Table 3 compares PruningRAG with and without an initial broad retrieval step. Th
              </p>
 
                  <!-- prompt -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h5 class="title is-3">Knowledge-Enhanced Prompt</h5>
-        <div class="publication-video">
-          <img src="static/images/prompt.png"/>
-        </div>
-      </div>
-    </div>
-    <!--/ prompt -->
-  </div>
+  
+  <figure class="image is-centered">
+    <img src="static/images/prompt.png" alt="Knowledge-enhanced prompt">
+    <figcaption>Knowledge-enhanced prompt.</figcaption>
+  </figure>
 
             <p> 
               Figure 2 illustrates the impact of CoT reasoning in PruningRAG, depending on external knowledge quality. With noisy, unstructured data, CoT effectively filters irrelevant information and reduces hallucinations, improving accuracy. However, with reliable API-based sources, CoT's cautious multi-step reasoning may lower accuracy despite reducing hallucinations, highlighting a trade-off between precision and conservatism.
