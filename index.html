@@ -146,7 +146,7 @@
                     <span class="icon">
                         <i class="ai ai-arxiv"></i>
                     </span>
-                    <span>A Knowledge-Centric Benchmarking Framework</span>
+                    <span>PruningRAG</span>
                   </a>
                 </span>
 
@@ -239,10 +239,22 @@
     </div>
     <!--/ Abstract. -->
 
+        <!-- Overview -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Comparison of Standard RAG and PruningRAG</h2>
+            <div class="publication-video">
+              <img src="static/images/problem_definition.png"/>
+            </div>
+          </div>
+        </div>
+        <!--/ Overview -->
+      </div>
+
     <!-- Overview -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3">Overview of PruningRAG</h2>
         <div class="publication-video">
           <img src="static/images/framework1_00.png"/>
         </div>
@@ -584,6 +596,18 @@ Table 3 compares PruningRAG with and without an initial broad retrieval step. Th
             <p>
               In this subsection, we analyze the impact of our strategies for enhancing LLM utilization and reasoning over pruned knowledge, including Chain-of-Thought (CoT) reasoning, In-Context Learning (ICL), noise chunk fusion, query placement in prompts, and our confidence detection strategy.
              </p>
+
+                 <!-- prompt -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Knowledge-Enhanced Prompt</h3>
+        <div class="publication-video">
+          <img src="static/images/prompt.png"/>
+        </div>
+      </div>
+    </div>
+    <!--/ prompt -->
+  </div>
 
             <p> 
               Figure 2 illustrates the impact of CoT reasoning in PruningRAG, depending on external knowledge quality. With noisy, unstructured data, CoT effectively filters irrelevant information and reduces hallucinations, improving accuracy. However, with reliable API-based sources, CoT's cautious multi-step reasoning may lower accuracy despite reducing hallucinations, highlighting a trade-off between precision and conservatism.
