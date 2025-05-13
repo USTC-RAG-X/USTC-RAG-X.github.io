@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PruningRAG</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    table {
+        padding: 0;
+        word-break: initial;
+    }
+    table tr {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 0;
+    }
+    table tr:nth-child(2n),
+    thead {
+        background-color: #f8f8f8;
+    }
+    table th {
+        font-weight: bold;
+        border: 1px solid #dfe2e5;
+        border-bottom: 0;
+        margin: 0;
+        padding: 6px 13px;
+    }
+    table td {
+        border: 1px solid #dfe2e5;
+        margin: 0;
+        padding: 6px 13px;
+    }
+    table th:first-child,
+    table td:first-child {
+        margin-top: 0;
+    }
+    table th:last-child,
+    table td:last-child {
+        margin-bottom: 0;
+    }
+    h1 {
+        font-size: 2.25em;
+        line-height: 1.2;
+        border-bottom: 1px solid #eee;
+    }
+    h2 {
+        font-size: 1.75em;
+        line-height: 1.225;
+        border-bottom: 1px solid #eee;
+    }
+    .research-links {
+      margin-top: 2rem;
+    }
+
+    .research-item {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .research-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .research-item h3 {
+      color: #3273dc;
+      margin-bottom: 1rem;
+    }
+
+    .research-item ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .research-item li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .research-item a {
+      color: #3273dc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .research-item a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar-dropdown {
+      padding: 0.5rem 0;
+    }
+
+    .navbar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar-item .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar-divider {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="index.html">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024">
+            <span class="icon">
+              <i class="fas fa-trophy"></i>
+            </span>
+            <span>Solution of Meta KDD Cup '24 CRAG</span>
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2503.04800">
+            <span class="icon">
+              <i class="fas fa-database"></i>
+            </span>
+            <span>HoH: A Dynamic Benchmark for RAG</span>
+          </a>
+          <a class="navbar-item" href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation">
+            <span class="icon">
+              <i class="fas fa-book"></i>
+            </span>
+            <span>A Survey on Knowledge-Oriented RAG</span>
+          </a>
+          <a class="navbar-item" href="https://github.com/0russwest0/Agent-R1">
+            <span class="icon">
+              <i class="fas fa-code-branch"></i>
+            </span>
+            <span>Agent-R1: RL-based LLM Agents</span>
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="index.html">
+            <span class="icon">
+              <i class="fas fa-home"></i>
+            </span>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<body>
+  <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-1 publication-title">PruningRAG:  Multi-Source Knowledge Pruning for RAG</h2>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- arXiv Papers Link (Single Row) -->
+              <div style="margin-bottom: 20px;">
+                <span class="link-block">
+                  <button id="show-papers" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv Papers</span>
+                  </button>
+                </span>
+              </div>
+
+              <!-- Hidden Paper Links (Below arXiv Papers Button) -->
+              <div id="paper-links" style="display: none; margin-bottom: 20px;">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2409.13694"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>PruningRAG</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2409.15337"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Revisiting the Solution of Meta KDD Cup 2024</span>
+                  </a>
+                </span>
+              </div>
+
+              <!-- Code and Dataset Links (Same Row) -->
+              <div style="display: flex; justify-content: center; gap: 20px;">
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/USTCAGI/PruningRAG"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+
+                <!-- Dataset Link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/fishsure/RM3QA"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('show-papers').addEventListener('click', function() {
+    var paperLinks = document.getElementById('paper-links');
+    if (paperLinks.style.display === 'none') {
+      paperLinks.style.display = 'block';
+    } else {
+      paperLinks.style.display = 'none';
+    }
+  });
+</script>
+
+  
+  
+
+  
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/platform.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Table Manipulation using TableLLM on our platform
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+
+            Retrieval-augmented generation (RAG) is increasingly recognized as an effective approach for mitigating the hallucination of large language models (LLMs) through the integration of external knowledge. While numerous efforts, most studies focus on a single type of external knowledge source. However, in real-world applications, most situations involve diverse knowledge from various sources, yet this area has been less explored. The main dilemma is the lack of a suitable dataset containing multiple knowledge sources and pre-exploration of the associated issues. To address these challenges, we standardize a benchmark dataset that combines structured and unstructured knowledge across diverse and complementary domains. Based on this dataset, we further develop a plug-and-play RAG framework, PruningRAG, whose main characteristic is to employ multi-granularity pruning strategies for optimizing the integration of relevant information and minimizing misleading context. Building upon the standardized dataset and PruningRAG, we also report a series of experimental results, as well as insightful findings. Our dataset and code are publicly available <a href="https://github.com/USTCAGI/PruningRAG" target="_blank">here</a>, with the aim of advancing future research in the RAG community.
+           </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+      
+
+
+
+    <!-- Overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Overview of PruningRAG</h3>
+        <div class="publication-video">
+          <img src="static/images/framework1_00.png"/>
+        </div>
+      </div>
+    </div>
+    <!--/ Overview -->
+  </div>
+
+
+
+  <div class="container is-max-desktop">
+    <!-- Benchmark Evaluation Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Benchmark Evaluation of RAG</h2>
+        <div class="content has-text-justified"></div>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <caption>Table 1: Comparative analysis of RAG performance across different external knowledge.</caption>
+            <thead>
+              <tr>
+                <th>External Knowledge</th>
+                <th>Method</th>
+                <th>Acc.</th>
+                <th>Halluc.</th>
+                <th>Miss.</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>None</td>
+                <td>LLM-Only</td>
+                <td>15.61%</td>
+                <td>20.42%</td>
+                <td>63.97%</td>
+                <td>-4.81%</td>
+              </tr>
+              <tr>
+                <td rowspan="3">5 Web pages</td>
+                <td>Naive RAG</td>
+                <td>7.51%</td>
+                <td><b>8.68%</b></td>
+                <td>83.81%</td>
+                <td>-1.16%</td>
+              </tr>
+              <tr>
+                <td>HyDE</td>
+                <td>24.36%</td>
+                <td>17.72%</td>
+                <td>57.91%</td>
+                <td>6.64%</td>
+              </tr>
+              <tr>
+                <td>PruningRAG</td>
+                <td><b>27.64%</b></td>
+                <td>18.16%</td>
+                <td>54.19%</td>
+                <td><b>9.48%</b></td>
+              </tr>
+              <tr>
+                <td rowspan="3">Mock API</td>
+                <td>Naive RAG</td>
+                <td>8.53%</td>
+                <td><b>1.60%</b></td>
+                <td>89.86%</td>
+                <td>6.93%</td>
+              </tr>
+              <tr>
+                <td>HyDE</td>
+                <td>19.84%</td>
+                <td>11.09%</td>
+                <td>69.07%</td>
+                <td>8.75%</td>
+              </tr>
+              <tr>
+                <td>PruningRAG</td>
+                <td><b>29.03%</b></td>
+                <td>10.86%</td>
+                <td>60.10%</td>
+                <td><b>18.16%</b></td>
+              </tr>
+              <tr>
+                <td rowspan="3">5 Web pages + Mock API</td>
+                <td>Naive RAG</td>
+                <td>15.10%</td>
+                <td><b>7.95%</b></td>
+                <td>76.95%</td>
+                <td>7.15%</td>
+              </tr>
+              <tr>
+                <td>HyDE</td>
+                <td>22.07%</td>
+                <td>21.88%</td>
+                <td>56.09%</td>
+                <td>0.15%</td>
+              </tr>
+              <tr>
+                <td>PruningRAG</td>
+                <td><b>44.64%</b></td>
+                <td>17.58%</td>
+                <td>37.78%</td>
+                <td><b>27.06%</b></td>
+              </tr>
+              <tr>
+                <td rowspan="3">50 Web pages + Mock API</td>
+                <td>Naive RAG</td>
+                <td>14.22%</td>
+                <td><b>8.90%</b></td>
+                <td>76.88%</td>
+                <td>5.32%</td>
+              </tr>
+              <tr>
+                <td>HyDE</td>
+                <td>32.68%</td>
+                <td>19.69%</td>
+                <td>47.63%</td>
+                <td>12.99%</td>
+              </tr>
+              <tr>
+                <td>PruningRAG</td>
+                <td><b>38.73%</b></td>
+                <td>14.59%</td>
+                <td>46.68%</td>
+                <td><b>24.14%</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  </section>
+  
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Empirical Study Section -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Empirical Study</h2>
+          
+          <!-- Knowledge Source Selection Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Coarse-Grained Knowledge Pruning</h3>
+            <p>
+              
+Table 2 evaluates four knowledge utilization strategies: relying solely on internal or external knowledge, combining internal and external sources, prioritizing internal knowledge before external retrieval, and a proposed pruning-based method. The results show that using multiple sources simultaneously often introduces conflicts, while prioritizing internal knowledge can lead to hallucinations. The pruning-based strategy dynamically selects relevant sources per query, optimizing knowledge integration and improving overall performance.  </p>
+                      <!-- Table for Knowledge Source Selection -->
+                      <div class="table-container">
+                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                          <caption>Table 2: Comparison of performance of different strategies for leveraging knowledge sources.</caption>
+                          <thead>
+                            <tr>
+                              <th>Experiment Setting</th>
+                              <th>Acc.</th>
+                              <th>Score</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>LLM</td>
+                              <td>17.94%</td>
+                              <td>-0.36%</td>
+                            </tr>
+                            <tr>
+                              <td>Web pages</td>
+                              <td>27.64%</td>
+                              <td>9.48%</td>
+                            </tr>
+                            <tr>
+                              <td>Mock API</td>
+                              <td>34.43%</td>
+                              <td>24.43%</td>
+                            </tr>
+                            <tr>
+                              <td>Both</td>
+                              <td>40.26%</td>
+                              <td>18.31%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM+Web pages</td>
+                              <td>17.94%</td>
+                              <td>7.80%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM+Mock API</td>
+                              <td>40.55%</td>
+                              <td>22.25%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM+Both</td>
+                              <td><b>45.73%</b></td>
+                              <td>14.37%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM → Web pages</td>
+                              <td>25.30%</td>
+                              <td>-5.84%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM → Mock API</td>
+                              <td>35.01%</td>
+                              <td>11.31%</td>
+                            </tr>
+                            <tr>
+                              <td>LLM → Both</td>
+                              <td>38.22%</td>
+                              <td>6.64%</td>
+                            </tr>
+                            <tr>
+                              <td>Knowledge Source Pruning</td>
+                              <td>40.34%</td>
+                              <td><b>27.72%</b></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      
+        
+
+          </div>
+          
+          <!-- Retrieval for Knowledge Extraction Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Fine-Grained Knowledge Pruning</h3>
+            <p>
+              Retrieval is a crucial step in the RAG process. In this subsection, we analyze different retrieval techniques and their performance in extracting relevant information from knowledge sources. We also explore the trade-offs between speed and accuracy in various retrieval methods.
+            </p>
+          
+          <!-- First Table for Retrieval Comparison -->
+           <p>
+            
+Table 3 compares PruningRAG with and without an initial broad retrieval step. The broad retrieval stage enhances efficiency by filtering large external knowledge volumes, reducing latency, and improving precision in the subsequent focused retrieval. This multi-stage pruning approach optimizes both relevance and speed for effective knowledge extraction.  </p>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 3: Comparison of effectiveness and efficiency with and without broad retrieval.</caption>
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Acc.</th>
+                  <th>Hall.</th>
+                  <th>Latency (s)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Broad Retrieval (w/)</td>
+                  <td><b>28.96%</b></td>
+                  <td>25.09%</td>
+                  <td><b>3.29</b></td>
+                </tr>
+                <tr>
+                  <td>Broad Retrieval (w/o)</td>
+                  <td>28.95%</td>
+                  <td><b>24.36%</b></td>
+                  <td>33.54</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+
+          <p> 
+            Figure 1 highlights the superiority of dense search over sparse search due to its ability to capture semantic relationships. While combining dense and sparse search improves accuracy compared to sparse search alone, it also increases hallucinations, indicating challenges in pruning misleading context effectively. </p>
+          <!-- Figure for Retrieval Methods Comparison -->
+          <figure class="image is-centered">
+            <img src="static/images/Dense_Sparse1.png" alt="Performance of varying retrieval methods in RAG">
+            <figcaption>Figure 1: Performance of varying retrieval methods in RAG.</figcaption>
+          </figure>
+
+          <!-- Second Table for Reranker Configurations -->
+           <p>
+            Table 4 evaluates re-ranking configurations in PruningRAG, showing that increasing retrieval blocks slightly improves accuracy but raises hallucination rates. This highlights the reranker's limitations in pruning misleading information, emphasizing the importance of the preceding retrieval process.
+           </p>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+              <caption>Table 4: Performance of reranker configurations in RAG.</caption>
+              <thead>
+                <tr>
+                  <th>Config.</th>
+                  <th>Acc.</th>
+                  <th>Halluc.</th>
+                  <th>Miss.</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>(3, 3)</td>
+                  <td>24.14%</td>
+                  <td><b>20.42%</b></td>
+                  <td>55.43%</td>
+                  <td><b>3.72%</b></td>
+                </tr>
+                <tr>
+                  <td>(3, 5)</td>
+                  <td>23.85%</td>
+                  <td>22.68%</td>
+                  <td>53.46%</td>
+                  <td>1.17%</td>
+                </tr>
+                <tr>
+                  <td>(3, 10)</td>
+                  <td>24.51%</td>
+                  <td>23.05%</td>
+                  <td>52.44%</td>
+                  <td>1.46%</td>
+                </tr>
+                <tr>
+                  <td>(3, 20)</td>
+                  <td>25.38%</td>
+                  <td>23.34%</td>
+                  <td>51.28%</td>
+                  <td>2.04%</td>
+                </tr>
+                <tr>
+                  <td>(3, All)</td>
+                  <td><b>25.46%</b></td>
+                  <td>23.41%</td>
+                  <td>51.13%</td>
+                  <td>2.04%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="has-text-justified">
+              <em>Note:</em> (3, X) denotes retrieval of X chunks, with (3, All) indicating all chunks passed directly.
+            </p>
+          </div>
+          
+  
+          <!-- Knowledge Reasoning Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Knowledge Reasoning</h3>
+            <p>
+              In this subsection, we analyze the impact of our strategies for enhancing LLM utilization and reasoning over pruned knowledge, including Chain-of-Thought (CoT) reasoning, In-Context Learning (ICL), noise chunk fusion, query placement in prompts, and our confidence detection strategy.
+             </p>
+
+                 <!-- prompt -->
+  
+  <figure class="image is-centered">
+    <img src="static/images/prompt.png" alt="Knowledge-enhanced prompt">
+    <figcaption>Knowledge-enhanced prompt.</figcaption>
+  </figure>
+
+            <p> 
+              Figure 2 illustrates the impact of CoT reasoning in PruningRAG, depending on external knowledge quality. With noisy, unstructured data, CoT effectively filters irrelevant information and reduces hallucinations, improving accuracy. However, with reliable API-based sources, CoT's cautious multi-step reasoning may lower accuracy despite reducing hallucinations, highlighting a trade-off between precision and conservatism.
+               <!-- Figure for Retrieval Methods Comparison -->
+            <figure class="image is-centered">
+              <img src="static/images/cot.png" alt="Impact of CoT across knowledge sources">
+              <figcaption>Figure 2: Impact of CoT across knowledge sources.</figcaption>
+            </figure>
+
+
+            <p>Table 5 examines the effect of false premise examples on LLM performance in PruningRAG. Few-shot examples improve overall task comprehension and reasoning but reduce accuracy on false premise questions compared to zero-shot. Cross-domain examples outperform domain-specific ones, mitigating overfitting and enhancing reasoning through greater variability.
+      
+            </p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <caption>Table 5: Impact of few-shot learning on LLM reasoning.</caption>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>N</th>
+                    <th>Acc.</th>
+                    <th>Hall.</th>
+                    <th>Miss.</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="7">Overall</td>
+                    <td>0</td>
+                    <td>13.20%</td>
+                    <td><b>10.50%</b></td>
+                    <td>76.29%</td>
+                    <td>2.70%</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>16.05%</td>
+                    <td>12.62%</td>
+                    <td>71.33%</td>
+                    <td>3.43%</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>16.12%</td>
+                    <td>12.98%</td>
+                    <td>70.90%</td>
+                    <td>3.14%</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>15.17%</td>
+                    <td>12.69%</td>
+                    <td>72.14%</td>
+                    <td>2.48%</td>
+                  </tr>
+                  <tr>
+                    <td>1*</td>
+                    <td>16.12%</td>
+                    <td>11.89%</td>
+                    <td>71.99%</td>
+                    <td>4.23%</td>
+                  </tr>
+                  <tr>
+                    <td>2*</td>
+                    <td><b>18.02%</b></td>
+                    <td>11.23%</td>
+                    <td>70.75%</td>
+                    <td><b>6.78%</b></td>
+                  </tr>
+                  <tr>
+                    <td>3*</td>
+                    <td>16.41%</td>
+                    <td>11.60%</td>
+                    <td>72.00%</td>
+                    <td>4.81%</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="7">False Premise</td>
+                    <td>0</td>
+                    <td><b>25.00%</b></td>
+                    <td><b>5.77%</b></td>
+                    <td>69.23%</td>
+                    <td><b>19.23%</b></td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>16.03%</td>
+                    <td>14.10%</td>
+                    <td>69.87%</td>
+                    <td>1.93%</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>16.57%</td>
+                    <td>13.46%</td>
+                    <td>69.87%</td>
+                    <td>3.11%</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>17.31%</td>
+                    <td>12.82%</td>
+                    <td>69.87%</td>
+                    <td>4.49%</td>
+                  </tr>
+                  <tr>
+                    <td>1*</td>
+                    <td>20.51%</td>
+                    <td>12.18%</td>
+                    <td>67.31%</td>
+                    <td>8.33%</td>
+                  </tr>
+                  <tr>
+                    <td>2*</td>
+                    <td>19.87%</td>
+                    <td>11.54%</td>
+                    <td>68.59%</td>
+                    <td>6.33%</td>
+                  </tr>
+                  <tr>
+                    <td>3*</td>
+                    <td>23.08%</td>
+                    <td>9.62%</td>
+                    <td>67.30%</td>
+                    <td>13.46%</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="6"><i>Note:</i> <b>N*</b> indicates that the N examples provided for in-context learning are cross-domain examples.</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            
+            <p>This experiment evaluates the PruningRAG system's performance under various confidence evaluation strategies and prompt instructions to mitigate hallucinations. Two prompts were tested: one without guidance and another instructing the model to respond with "I don't know" when uncertain. Confidence methods included context sufficiency, entropy-based evaluation, and their combination.
+
+              As shown in Table 6, instructing the model to say "I don't know" reduced hallucinations across all methods, albeit with a slight drop in accuracy due to increased caution. Entropy-based evaluation combined with explicit prompts achieved the best balance, minimizing errors while maintaining performance. Combining both checks produced conservative responses, ideal for high-stakes scenarios, while entropy-based evaluation with prompts offered a balanced solution for general use.
+            </p>
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <caption>Table 6: Performance comparison of confidence evaluation methods.</caption>
+                  <thead>
+                    <tr>
+                      <th>Confidence Eval</th>
+                      <th>Acc.</th>
+                      <th>Hall.</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>None (w/o inst)</td>
+                      <td><b>44.78%</b></td>
+                      <td>55.14%</td>
+                      <td>-10.36%</td>
+                    </tr>
+                    <tr>
+                      <td>Context Check (w/o inst)</td>
+                      <td>30.71%</td>
+                      <td>18.17%</td>
+                      <td>12.55%</td>
+                    </tr>
+                    <tr>
+                      <td>Entropy-Based (w/o inst)</td>
+                      <td>42.23%</td>
+                      <td>43.11%</td>
+                      <td>-0.88%</td>
+                    </tr>
+                    <tr>
+                      <td>Combined (w/o inst)</td>
+                      <td>29.03%</td>
+                      <td><b>15.54%</b></td>
+                      <td><b>13.49%</b></td>
+                    </tr>
+                    <tr>
+                      <td>None (w/ inst)</td>
+                      <td><b>31.87%</b></td>
+                      <td>12.25%</td>
+                      <td>19.62%</td>
+                    </tr>
+                    <tr>
+                      <td>Context Check (w/ inst)</td>
+                      <td>26.40%</td>
+                      <td>10.21%</td>
+                      <td>16.19%</td>
+                    </tr>
+                    <tr>
+                      <td>Entropy-Based (w/ inst)</td>
+                      <td>30.49%</td>
+                      <td>10.36%</td>
+                      <td><b>20.13%</b></td>
+                    </tr>
+                    <tr>
+                      <td>Combined (w/ inst)</td>
+                      <td>24.73%</td>
+                      <td><b>9.04%</b></td>
+                      <td>15.68%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+
+          <p>Figure 3 highlights the importance of query positioning in prompts. Placing the query after the pruned context improves accuracy and reduces hallucinations, as the model benefits from full context before responding. This avoids the "query forgetting" effect in lengthy contexts, emphasizing the need to position queries after extensive retrieved information for optimal response quality.
+             </p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/query_position.png" alt="Impact of query position within prompt">
+            <figcaption>Figure 3: Impact of query position within prompt.</figcaption>
+          </figure>
+
+          <p>Figure 4 shows the impact of noise chunks in  PruningRAG. Moderate noise improves accuracy and performance by priming the model to distinguish relevant from irrelevant information. However, excessive noise degrades performance, underscoring the balance needed for optimal results.
+
+          </p>
+          <figure class="image is-centered"></figure>
+            <img src="static/images/noise.png" alt="Performance comparison based on noise chunk quantity in RAG">
+            <figcaption>Figure 4: Performance comparison based on noise chunk quantity in RAG.</figcaption>
+          </figure>
+
+
+          </div>
+
+          
+          <!-- Impact of Hyperparameter Configurations Subsection -->
+          <div class="content has-text-justified">
+            <h3 class="title is-4">Hyperparameter Sensitivity Analysis</h3>
+            <p>
+              In this section, we analyze the impact of hyperparameters such as chunk size, overlap, and the number of retrieved chunks on retrieval effectiveness and response quality, offering insights for effective tuning within the PruningRAG framework.
+            </p>
+
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_size.png" alt="Effect of chunk size on RAG performance">
+            <figcaption>Figure 5: Effect of chunk size on RAG performance.</figcaption>
+          </figure>
+
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_overlap.png" alt="Impact of chunk overlap on RAG performance">
+            <figcaption>Figure 6: Impact of chunk overlap on RAG performance.</figcaption>
+          </figure>
+
+          <figure class="image is-centered"></figure>
+            <img src="static/images/chunk_quantity.png" alt="Impact of chunk quantity on RAG performance">
+            <figcaption>Figure 7: Impact of chunk quantity on RAG performance.</figcaption>
+          </figure>
+
+
+
+
+      
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Contact -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Contact</h2>
+        <div class="content has-text-justified">
+          <p>
+            If you have any questions, we encourage you to either create Github issues 
+            or get in touch with us at <a href="mailto:rag_ustc@icanary.cn">rag_ustc@icanary.cn</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <b>This webpage is intended for academic purposes, not for commercial promotion.</b>
+          </p>
+          <p>
+            It is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="section">
+  <div class="container">
+    <h2 class="title is-3">More Research</h2>
+    <div class="content">
+      <div class="research-links">
+        <div class="research-item">
+          <h3 class="title is-4">
+            <i class="fas fa-trophy"></i>
+            Related Competition
+          </h3>
+          <ul>
+            <li>
+              <a href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024">
+                🥈 Solution of Meta KDD Cup '24 CRAG
+              </a>
+              - Our second-place solution that inspired this research
+            </li>
+          </ul>
+        </div>
+
+        <div class="research-item">
+          <h3 class="title is-4">
+            <i class="fas fa-database"></i>
+            Related Datasets
+          </h3>
+          <ul>
+            <li>
+              <a href="https://arxiv.org/abs/2503.04800">
+                HoH: A Dynamic Benchmark for RAG
+              </a>
+              - A benchmark for evaluating RAG performance with outdated information
+            </li>
+          </ul>
+        </div>
+
+        <div class="research-item">
+          <h3 class="title is-4">
+            <i class="fas fa-book"></i>
+            Related Surveys
+          </h3>
+          <ul>
+            <li>
+              <a href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation">
+                A Survey on Knowledge-Oriented Retrieval-Augmented Generation
+              </a>
+              - A comprehensive overview of RAG approaches and applications
+            </li>
+          </ul>
+        </div>
+
+        <div class="research-item">
+          <h3 class="title is-4">
+            <i class="fas fa-code-branch"></i>
+            Related Frameworks
+          </h3>
+          <ul>
+            <li>
+              <a href="https://github.com/0russwest0/Agent-R1">
+                Agent-R1: Training Powerful LLM Agents with End-to-End Reinforcement Learning
+              </a>
+              - An open-source framework for RL-based agent development
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
