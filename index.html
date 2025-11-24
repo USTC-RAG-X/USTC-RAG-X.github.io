@@ -1,239 +1,351 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>USTCAGI Research Directory</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  
-  <style>
-    .directory-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    
-    .directory-item {
-      margin: 1.5rem 0;
-      padding: 2rem;
-      border-radius: 12px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      border-left: 4px solid #3273dc;
-      position: relative;
-    }
-    
-    .directory-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    }
-    
-    .directory-title {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      text-align: center;
-      color: #363636;
-      font-weight: 600;
-    }
-
-    .category-tag {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    .tag-competition {
-      background-color: #ffeeba;
-      color: #856404;
-    }
-
-    .tag-dataset {
-      background-color: #d4edda;
-      color: #155724;
-    }
-
-    .tag-method {
-      background-color: #cce5ff;
-      color: #004085;
-    }
-
-    .tag-survey {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-
-    .tag-framework {
-      background-color: #e2e3e5;
-      color: #383d41;
-    }
-
-    .project-icon {
-      font-size: 1.5rem;
-      margin-right: 0.5rem;
-      color: #3273dc;
-    }
-
-    .subtitle {
-      color: #666;
-      margin-top: 0.5rem;
-    }
-
-    .navbar {
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .footer {
-      margin-top: 4rem;
-      padding: 2rem 0;
-      background-color: #f8f9fa;
-    }
-
-    .related-to {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.8rem;
-      color: #666;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .related-to i {
-      color: #3273dc;
-    }
-
-    .tag-competition-related {
-      background-color: #fff3cd;
-      color: #856404;
-      border: 1px dashed #ffeeba;
-    }
-
-    .connection-line {
-      position: absolute;
-      right: -2rem;
-      top: 50%;
-      width: 2rem;
-      height: 2px;
-      background-color: #3273dc;
-      opacity: 0.3;
-    }
-  </style>
-</head>
-
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://github.com/USTCAGI">
-        <span class="icon">
-          <i class="fas fa-home"></i>
-        </span>
-      </a>
-    </div>
-  </nav>
-
-  <section class="section">
-    <div class="directory-container">
-      <h1 class="directory-title">USTCAGI RAG Research Projects</h1>
-      
-      <div class="directory-item">
-        <span class="category-tag tag-competition">
-          <i class="fas fa-trophy"></i> Competition
-        </span>
-        <a href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024" style="color: inherit; text-decoration: none;">
-          <h2 class="title is-4">
-            <i class="fas fa-medal project-icon"></i>
-            🥈 Solution of Meta KDD Cup '24 CRAG
-          </h2>
-          <p class="subtitle is-6">Our second-place solution for the Meta KDD Cup 2024 CRAG challenge.</p>
-        </a>
-      </div>
-
-      <div class="directory-item">
-        <span class="category-tag tag-competition-related">
-          <i class="fas fa-lightbulb"></i> Competition Research
-        </span>
-        <div class="related-to">
-          <i class="fas fa-link"></i> Derived from KDD Cup '24
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>USTC AGI · RAG Research Directory</title>
+    <meta
+      name="description"
+      content="Retrieval-Augmented Generation research highlights from USTC AGI, spanning competitions, datasets, frameworks, and surveys."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./ref.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">USTC AGI</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
         </div>
-        <a href="pruningrag.html" style="color: inherit; text-decoration: none;">
-          <h2 class="title is-4">
-            <i class="fas fa-filter project-icon"></i>
-            PruningRAG: Multi-Source Knowledge Pruning for RAG
-          </h2>
-          <p class="subtitle is-6">A plug-and-play RAG framework that employs multi-granularity pruning strategies for optimizing the integration of relevant information. This work is derived from our experience in the KDD Cup 2024 competition.</p>
-        </a>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">RAG Initiative</p>
+        <h1>Retrieval-Augmented Generation Across Benchmarks and Agents</h1>
+        <p class="hero-subtitle">
+          We move from competition-winning systems to reusable frameworks,
+          datasets, and surveys that improve robustness, efficiency, and safety
+          of Retrieval-Augmented Generation pipelines.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn ghost" href="https://github.com/USTCAGI" target="_blank"
+            >GitHub</a
+          >
+        </div>
       </div>
-
-      <div class="directory-item">
-        <span class="category-tag tag-dataset">
-          <i class="fas fa-database"></i> Dataset
-        </span>
-        <a href="https://arxiv.org/abs/2503.04800" style="color: inherit; text-decoration: none;">
-          <h2 class="title is-4">
-            <i class="fas fa-chart-line project-icon"></i>
-            HoH: A Dynamic Benchmark for RAG
-          </h2>
-          <p class="subtitle is-6">The first benchmark to evaluate the impact of outdated information on Retrieval-Augmented Generation (RAG), revealing that outdated information significantly degrades RAG performance by reducing accuracy and potentially leading to harmful outputs.</p>
-        </a>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-value">5+</span>
+          <span class="stat-label">Active RAG Tracks</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">Meta KDD '24</span>
+          <span class="stat-label">🥈 Competition Finish</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">ACL & CIKM</span>
+          <span class="stat-label">2025 Acceptances</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">900★</span>
+          <span class="stat-label">Agent-R1 Community</span>
+        </div>
       </div>
+    </header>
 
-      <div class="directory-item">
-        <span class="category-tag tag-survey">
-          <i class="fas fa-book"></i> Survey
-        </span>
-        <a href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation" style="color: inherit; text-decoration: none;">
-          <h2 class="title is-4">
-            <i class="fas fa-file-alt project-icon"></i>
-            A Survey on Knowledge-Oriented Retrieval-Augmented Generation
-          </h2>
-          <p class="subtitle is-6">Focusing on a knowledge-oriented perspective, this survey offers a comprehensive overview of RAG, examining its mechanisms, categorizing its approaches, discussing evaluation, highlighting applications, and outlining future directions within natural language processing.</p>
-        </a>
-      </div>
-
-      <div class="directory-item">
-        <span class="category-tag tag-framework">
-          <i class="fas fa-code-branch"></i> Framework
-        </span>
-        <a href="https://github.com/0russwest0/Agent-R1" style="color: inherit; text-decoration: none;">
-          <h2 class="title is-4">
-            <i class="fas fa-robot project-icon"></i>
-            Agent-R1: Training Powerful LLM Agents with End-to-End Reinforcement Learning
-          </h2>
-          <p class="subtitle is-6">Agent-R1 is an open-source framework designed to accelerate research and development at the critical intersection of RL and Agent.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
+    <main>
+      <section id="projects" class="section research">
+        <div class="section-header">
+          <p class="eyebrow">Flagship Projects</p>
+          <h2>Systems, Benchmarks, and Knowledge Resources</h2>
+          <p>
+            Each project pushes Retrieval-Augmented Generation forward—from
+            competition-grade systems to public benchmarks and surveys.
+          </p>
+        </div>
+        <div class="research-grid">
+          <article
+            class="card focus"
+            data-link="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024"
+            tabindex="0"
+          >
+            <h3>KDD Cup '24 Workshop</h3>
             <p>
-              <b>This webpage is intended for academic purposes, not for commercial promotion.</b>
+              Second-place solution for Meta's CRAG challenge, delivering
+              reliable multi-hop retrieval and controlled generation.
             </p>
+            <a href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024" target="_blank"
+              >Competition Repo →</a
+            >
+          </article>
+          <article
+            class="card focus"
+            data-link="pruningrag.html"
+            tabindex="0"
+          >
+            <h3>PruningRAG · CIKM 2025</h3>
             <p>
-              It is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+              Plug-and-play framework with multi-source pruning strategies that
+              filter noisy knowledge before generation; accepted to CIKM 2025.
+            </p>
+            <a href="pruningrag.html">Paper & Framework →</a>
+          </article>
+          <article
+            class="card focus"
+            data-link="https://arxiv.org/abs/2503.04800"
+            tabindex="0"
+          >
+            <h3>HoH Benchmark · ACL 2025</h3>
+            <p>
+              Measures how outdated information hurts RAG reliability and now
+              part of the ACL 2025 Main Conference program.
+            </p>
+            <a href="https://arxiv.org/abs/2503.04800" target="_blank"
+              >ArXiv →</a
+            >
+          </article>
+          <article
+            class="card focus"
+            data-link="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation"
+            tabindex="0"
+          >
+            <h3>Knowledge-Oriented Survey</h3>
+            <p>
+              Comprehensive taxonomy and evaluation review for RAG systems,
+              covering mechanisms, applications, and open problems.
+            </p>
+            <a
+              href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation"
+              target="_blank"
+              >Survey Repo →</a
+            >
+          </article>
+          <article
+            class="card focus"
+            data-link="https://github.com/0russwest0/Agent-R1"
+            tabindex="0"
+          >
+            <h3>Agent-R1 · 900★</h3>
+            <p>
+              End-to-end reinforcement learning agent that couples retrieval,
+              planning, and execution for complex tasks; community support now
+              exceeds 900 GitHub stars.
+            </p>
+            <a href="https://github.com/0russwest0/Agent-R1" target="_blank"
+              >Framework →</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="highlights" class="section highlights">
+        <div class="section-header">
+          <p class="eyebrow">Timeline</p>
+          <h2>Milestones in Retrieval-Augmented Generation</h2>
+        </div>
+        <div class="timeline">
+          <article class="milestone">
+            <div>
+              <p class="milestone-year">2024</p>
+              <h3>Meta KDD Cup · CRAG Track</h3>
+              <p>
+                Multi-stage retrieval, reranking, and controllable decoding
+                achieved a silver medal among 1,400+ teams.
+              </p>
+            </div>
+            <a href="https://github.com/USTCAGI/CRAG-in-KDD-Cup2024" target="_blank"
+              >Details →</a
+            >
+          </article>
+          <article class="milestone">
+            <div>
+              <p class="milestone-year">2024</p>
+              <h3>PruningRAG · CIKM 2025</h3>
+              <p>
+                Multi-granularity pruning policies for source selection, now an
+                accepted paper at CIKM 2025, reducing hallucinations in deployed
+                RAG agents.
+              </p>
+            </div>
+            <a href="pruningrag.html">Framework →</a>
+          </article>
+          <article class="milestone">
+            <div>
+              <p class="milestone-year">2025</p>
+              <h3>HoH Benchmark · ACL 2025</h3>
+              <p>
+                First dataset to stress outdated knowledge, now accepted by the
+                ACL 2025 Main Conference, quantifying freshness effects on
+                downstream reasoning accuracy.
+              </p>
+            </div>
+            <a href="https://arxiv.org/abs/2503.04800" target="_blank"
+              >Paper →</a
+            >
+          </article>
+          <article class="milestone">
+            <div>
+              <p class="milestone-year">2025</p>
+              <h3>Knowledge-Oriented RAG Survey</h3>
+              <p>
+                Comprehensive taxonomy that catalogs retrieval strategies,
+                evaluation lenses, and safety considerations for production
+                RAG systems.
+              </p>
+            </div>
+            <a
+              href="https://github.com/USTCAGI/Awesome-Papers-Retrieval-Augmented-Generation"
+              target="_blank"
+              >Survey Repo →</a
+            >
+          </article>
+          <article class="milestone">
+            <div>
+              <p class="milestone-year">2025</p>
+              <h3>Agent-R1 · 900★ Community</h3>
+              <p>
+                Open-source Agent-R1 crosses 900 stars as researchers adopt its
+                retrieval-aware RL training loop for trustworthy autonomous
+                agents.
+              </p>
+            </div>
+            <a href="https://github.com/0russwest0/Agent-R1" target="_blank"
+              >Framework →</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="resources" class="section resources">
+        <div class="section-header">
+          <p class="eyebrow">Resources</p>
+          <h2>Toolchains, Data, and Community</h2>
+        </div>
+        <div class="resource-grid">
+          <article class="card resource">
+            <h3>Competition Toolkit</h3>
+            <p>
+              Modular retrievers, rerankers, and decoders extracted from the
+              KDD Cup pipeline for rapid experimentation.
+            </p>
+          </article>
+          <article class="card resource">
+            <h3>Pruning Policies</h3>
+            <p>
+              Multi-source heuristics that cull redundant passages before
+              feeding them into the generator.
+            </p>
+          </article>
+          <article class="card resource">
+            <h3>Temporal Benchmarks</h3>
+            <p>
+              HoH-style datasets that capture changing facts and measure model
+              freshness.
+            </p>
+          </article>
+          <article class="card resource">
+            <h3>Awesome RAG Papers</h3>
+            <p>
+              Curated reading list and taxonomy for anyone building RAG systems
+              in production.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section vision">
+        <div class="vision-content">
+          <h2>Why Retrieval Still Matters</h2>
+          <p>
+            We prioritize grounded reasoning by constraining large language
+            models with curated, verifiable context. Our work spans pruning,
+            benchmark design, and agent training to keep answers safe and
+            up-to-date.
+          </p>
+        </div>
+        <div class="vision-points">
+          <div>
+            <h3>Responsible Systems</h3>
+            <p>
+              Multi-source pruning and audits reduce hallucinations and
+              encourage evidence-backed responses.
+            </p>
+          </div>
+          <div>
+            <h3>Continuous Evaluation</h3>
+            <p>
+              Automated freshness tests and safety audits keep RAG deployments
+              aligned with evolving knowledge and risk requirements.
+            </p>
+          </div>
+          <div>
+            <h3>Open Collaboration</h3>
+            <p>
+              Repositories, dataset releases, and surveys lower the barrier for
+              the broader RAG community.
             </p>
           </div>
         </div>
-      </div>
-    </div>
-  </footer>
+      </section>
+    </main>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-</body>
+    <footer id="contact" class="footer">
+      <div>
+        <p class="eyebrow">Connect</p>
+        <h3>Work with the USTC AGI RAG Group</h3>
+        <p>
+          We welcome collaborations on Retrieval-Augmented Generation benchmarks,
+          datasets, and applied agent deployments.
+        </p>
+      </div>
+      <div class="footer-actions">
+        <a class="btn primary" href="mailto:mycheng@ustc.edu.cn">Email Us</a>
+        <a class="btn ghost" href="https://github.com/USTCAGI" target="_blank"
+          >GitHub</a
+        >
+      </div>
+      <p class="footer-note">
+        © <span id="year"></span> USTC AGI · Licensed under
+        <a
+          href="http://creativecommons.org/licenses/by-sa/4.0/"
+          target="_blank"
+          rel="license"
+          >CC BY-SA 4.0</a
+        >.
+      </p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      document.querySelectorAll(".card[data-link]").forEach((card) => {
+        const openLink = () => {
+          const target = card.dataset.link;
+          if (target) {
+            window.open(target, "_blank", "noopener");
+          }
+        };
+
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("a")) return;
+          openLink();
+        });
+
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" && !event.target.closest("a")) {
+            openLink();
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
